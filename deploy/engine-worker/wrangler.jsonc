@@ -1,0 +1,25 @@
+// Cloudflare Worker that runs the Python engine in a Cloudflare Container.
+// - Cron: daily sync + ingest + compute (06:12 Oslo in winter, 07:12 in summer; cron is UTC).
+// - HTTP: /health (public) and /run (bearer token) for on-demand runs from the web app.
+// Secrets (wrangler secret put …): DATABASE_URL, FRED_API_KEY, ENGINE_API_TOKEN.
+// Not deployed yet — review against current Cloudflare Containers docs before the first deploy.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cockpit-engine",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "observability": { "enabled": true },
+  "containers": [
+    {
+      "class_name": "Engine",
+      "image": "../../services/engine/Dockerfile",
+      "instance_type": "standard-1",
+      "max_instances": 1
+    }
+  ],
+  "durable_objects": {
+    "bindings": [{ "class_name": "Engine", "name": "ENGINE" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Engine"] }],
+  "triggers": { "crons": ["12 5 * * *"] }
+}

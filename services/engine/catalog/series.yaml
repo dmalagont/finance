@@ -1,0 +1,82 @@
+# Source series the engine ingests.
+#
+#   id          internal series id (stable; referenced by indicator definitions)
+#   source      fred | norges_bank | ssb | yahoo
+#   key         the series identifier at the source
+#   params      source-specific parameters
+#   check       true when the key is a best guess not yet confirmed against a live
+#               response; the first successful fetch confirms it (logged in ops.runs)
+#
+# Units are as published by the source; conversions happen in compute/indicators.py.
+
+sources:
+  fred: { name: "FRED · Federal Reserve Bank of St. Louis", url: "https://fred.stlouisfed.org" }
+  norges_bank: { name: "Norges Bank", url: "https://data.norges-bank.no" }
+  ssb: { name: "Statistics Norway (SSB)", url: "https://data.ssb.no" }
+  yahoo: { name: "Yahoo Finance (unofficial)", url: "https://finance.yahoo.com" }
+
+series:
+  # ── US liquidity ─────────────────────────────────────────────
+  - { id: walcl, source: fred, key: WALCL, name: "Fed total assets", unit: "USD mn", frequency: W }
+  - { id: wtregen, source: fred, key: WTREGEN, name: "Treasury General Account", unit: "USD bn", frequency: W }
+  - { id: rrpontsyd, source: fred, key: RRPONTSYD, name: "Overnight reverse repo", unit: "USD bn", frequency: D }
+  - { id: m2sl, source: fred, key: M2SL, name: "M2 money stock", unit: "USD bn", frequency: M }
+  - { id: dfii10, source: fred, key: DFII10, name: "10y TIPS yield", unit: "%", frequency: D }
+  - { id: nfci, source: fred, key: NFCI, name: "Chicago Fed NFCI", unit: "index", frequency: W }
+  - { id: dtwexbgs, source: fred, key: DTWEXBGS, name: "Nominal broad US dollar index", unit: "index", frequency: D,
+      notes: "Fed broad dollar index; free substitute for ICE DXY" }
+
+  # ── US macro ─────────────────────────────────────────────────
+  - { id: unrate, source: fred, key: UNRATE, name: "Unemployment rate", unit: "%", frequency: M, vintages: true }
+  - { id: sahm, source: fred, key: SAHMREALTIME, name: "Sahm rule (real time)", unit: "pp", frequency: M }
+  - { id: icsa, source: fred, key: ICSA, name: "Initial claims", unit: "number", frequency: W }
+  - { id: indpro, source: fred, key: INDPRO, name: "Industrial production", unit: "index", frequency: M, vintages: true }
+  - { id: payems, source: fred, key: PAYEMS, name: "Nonfarm payrolls", unit: "thousands", frequency: M, vintages: true }
+  - { id: pcepilfe, source: fred, key: PCEPILFE, name: "Core PCE price index", unit: "index", frequency: M, vintages: true }
+  - { id: cpiaucsl, source: fred, key: CPIAUCSL, name: "CPI all items", unit: "index", frequency: M, vintages: true }
+  - { id: t5yie, source: fred, key: T5YIE, name: "5y breakeven inflation", unit: "%", frequency: D }
+  - { id: t5yifr, source: fred, key: T5YIFR, name: "5y5y forward inflation", unit: "%", frequency: D }
+
+  # ── US cycle ─────────────────────────────────────────────────
+  - { id: t10y2y, source: fred, key: T10Y2Y, name: "10y minus 2y", unit: "pp", frequency: D }
+  - { id: t10y3m, source: fred, key: T10Y3M, name: "10y minus 3m", unit: "pp", frequency: D }
+  - { id: dff, source: fred, key: DFF, name: "Effective fed funds rate", unit: "%", frequency: D }
+  - { id: drtscilm, source: fred, key: DRTSCILM, name: "SLOOS: tightening C&I loans (large/medium firms)", unit: "net %", frequency: Q }
+  - { id: gfdegdq188s, source: fred, key: GFDEGDQ188S, name: "Federal debt to GDP", unit: "% GDP", frequency: Q }
+  - { id: tdsp, source: fred, key: TDSP, name: "Household debt service ratio", unit: "% income", frequency: Q }
+
+  # ── Valuation ────────────────────────────────────────────────
+  - { id: ncbeilq027s, source: fred, key: NCBEILQ027S, name: "Nonfinancial corporate equities, market value", unit: "USD mn", frequency: Q }
+  - { id: gdp, source: fred, key: GDP, name: "Nominal GDP (saar)", unit: "USD bn", frequency: Q, vintages: true }
+  - { id: hy_yield, source: fred, key: BAMLH0A0HYM2EY, name: "ICE BofA US HY effective yield", unit: "%", frequency: D }
+
+  # ── Stress ───────────────────────────────────────────────────
+  - { id: hy_oas, source: fred, key: BAMLH0A0HYM2, name: "ICE BofA US HY OAS", unit: "%", frequency: D,
+      notes: "ICE limits history on FRED; check depth" }
+  - { id: ig_oas, source: fred, key: BAMLC0A0CM, name: "ICE BofA US IG OAS", unit: "%", frequency: D }
+  - { id: ccc_oas, source: fred, key: BAMLH0A3HYC, name: "ICE BofA CCC & lower OAS", unit: "%", frequency: D }
+  - { id: vixcls, source: fred, key: VIXCLS, name: "VIX close", unit: "index", frequency: D }
+  - { id: stlfsi4, source: fred, key: STLFSI4, name: "St. Louis Fed financial stress", unit: "index", frequency: W }
+
+  # ── Norway: Norges Bank (SDMX) ───────────────────────────────
+  - { id: nb_policy_rate, source: norges_bank, key: "IR/B.KPRA.SD.R", name: "Policy rate (sight deposit rate)", unit: "%", frequency: D, check: true }
+  - { id: nowa, source: norges_bank, key: "SHORT_RATES/B.NOWA.ON.R", name: "NOWA overnight rate", unit: "%", frequency: D, check: true }
+  - { id: i44, source: norges_bank, key: "EXR/B.I44.NOK.SP", name: "Trade-weighted krone (I-44)", unit: "index", frequency: D, check: true }
+  - { id: eurnok, source: norges_bank, key: "EXR/B.EUR.NOK.SP", name: "EUR/NOK", unit: "NOK", frequency: D }
+  - { id: usdnok, source: norges_bank, key: "EXR/B.USD.NOK.SP", name: "USD/NOK", unit: "NOK", frequency: D }
+  - { id: no_10y, source: norges_bank, key: "GOVT_GENERIC_RATES/B.10Y.GBON", name: "Norway 10y government yield", unit: "%", frequency: D, check: true }
+
+  # ── Norway: SSB (PxWebApi, JSON-stat2) ───────────────────────
+  - id: cpi_ate
+    source: ssb
+    key: "05327"
+    name: "CPI-ATE, 12-month change"
+    unit: "% y/y"
+    frequency: M
+    check: true
+    params: { selection: { ContentsCode: "KPIJustEnerg12" } }
+
+  # ── Market prices (unofficial) ───────────────────────────────
+  - { id: brent, source: yahoo, key: "BZ=F", name: "Brent crude front month", unit: "USD/bbl", frequency: D, check: true }
+  - { id: spx, source: yahoo, key: "^GSPC", name: "S&P 500", unit: "index", frequency: D, check: true }
+  - { id: osebx, source: yahoo, key: "OSEBX.OL", name: "Oslo Børs benchmark index", unit: "index", frequency: D, check: true }
