@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* Gunmetal Ember — tokens from design/handoff/README.md */
+@theme static {
+  --color-ground: #000000;
+  --color-panel: #060a0f;
+  --color-raised: #111821;
+  --color-hover: #0b1118;
+  --color-border: #202a36;
+  --color-border-strong: #3a4757;
+  --color-grid: #16202b;
+  --color-ink: #eaf0f7;
+  --color-ink-2: #b8c4d3;
+  --color-muted: #8693a6;
+  --color-faint: #5d6878;
+  --color-ember: #e8590c;
+  --color-ember-tint: #ff9a5c;
+  --color-ember-deep: #3a1a08;
+  --color-ember-pale: #f6d6c2;
+  --color-up: #22c55e;
+  --color-down: #ef4444;
+  --color-watch: #ffb84d;
+  --color-link: #3b82f6;
+  --color-link-hover: #7aa9f8;
+
+  /* Light headline card */
+  --color-card: #e8ecf1;
+  --color-card-strip: #dae0e8;
+  --color-card-raised: #d3dbe5;
+  --color-card-border: #c5ceda;
+  --color-card-ink: #0a0f16;
+  --color-card-ink-2: #2e3947;
+  --color-card-muted: #536071;
+  --color-card-index: #a93d08;
+  --color-card-up: #0a7a42;
+  --color-card-down: #c01e2d;
+  --color-card-watch: #855600;
+  --color-card-link: #1c5ba8;
+
+  --font-display: var(--font-barlow), "Barlow Condensed", sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
+  --font-sans: var(--font-plex-sans), "IBM Plex Sans", system-ui, sans-serif;
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --animate-rise: rise 480ms var(--ease-out-strong) both;
+  --animate-reveal: reveal 420ms var(--ease-out-strong) both;
+  --animate-draw: reveal 1.6s var(--ease-in-out-strong) both;
+  --animate-marquee: marquee 70s linear infinite;
+  --animate-live: live 2s ease-out infinite;
+  --animate-shimmer: shimmer 1.4s linear infinite;
+
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes live {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 7px rgba(34, 197, 94, 0);
+  }
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@keyframes flash-up {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  10% {
+    background-color: rgba(34, 197, 94, 0.3);
+  }
+}
+@keyframes flash-down {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  10% {
+    background-color: rgba(239, 68, 68, 0.3);
+  }
+}
+@keyframes swing {
+  from {
+    transform: rotate(-40deg);
+  }
+  to {
+    transform: rotate(40deg);
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-ground);
+    color-scheme: dark;
+  }
+  body {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: var(--color-link);
+  }
+  a:hover {
+    color: var(--color-link-hover);
+  }
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+  :focus-visible {
+    outline: 1px solid var(--color-ember);
+    outline-offset: -3px;
+  }
+  ::selection {
+    background: var(--color-ember-deep);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  /* Press feedback: scale 0.97 over 160ms */
+  .press {
+    transition: transform 160ms var(--ease-out-strong);
+  }
+  .press:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+  .shimmer {
+    background: linear-gradient(90deg, #111821 0%, #1c2633 50%, #111821 100%);
+    background-size: 200% 100%;
+    animation: var(--animate-shimmer);
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  /* Long-form reading text: readable sans instead of mono */
+  .prose-body {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hover-row:hover {
+    background: var(--color-hover);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

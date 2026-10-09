@@ -4,4 +4,5 @@ Private investment cockpit: macro and market risk monitoring, probabilities, and
 construction, with an educational layer built around an "investor council"
 (Dalio, Druckenmiller, Marks, Buffett, Greenblatt, Taleb, Tudor Jones, Bernstein, Munger).
 
-See [docs/DESIGN.md](docs/DESIGN.md) for scope, architecture and phases.
+See [docs/DESIGN.md](docs/DESIGN.md) for scope, architecture and phases, and
+[apps/web](apps/web/README.md) for the web app.
