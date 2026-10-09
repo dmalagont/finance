@@ -140,6 +140,19 @@ Norway-specific signals:
   correlation matrix and count of effectively independent streams, drawdowns,
   VaR / expected shortfall.
 - **Fragility**: crash payoff at −20% / −40% equity, barbell breakdown, hidden leverage.
+- **Fund look-through** (primary — the portfolio is mostly funds):
+  - True exposure across all funds combined: region, sector, currency, top companies,
+    overlap between funds, hidden concentration (e.g. share in the largest US tech names).
+  - Holdings from issuer files (ETF daily holdings, mutual-fund monthly/semi-annual reports).
+  - Returns-based style analysis: regress each fund's NAV history on factors and regimes to
+    estimate its real exposure (equity beta, rates, USD/NOK, value/growth) — needs only prices.
+  - Costs (TER, platform fees), NOK-hedged vs unhedged share classes, ASK eligibility and
+    equity share for tax, tracking difference vs index.
+- **Stock scorecard** (secondary, small watchlist; phase 2b): council-based checks per stock
+  (Buffett quality, Greenblatt Magic Formula, Marks downside, Taleb fragility, Tudor Jones
+  trend, regime sensitivity) and a reverse DCF ("what growth is priced in?") instead of paid
+  analyst forecasts. Data: SEC EDGAR XBRL for US; ESEF filings or a paid fundamentals API for
+  Oslo/Europe. Own visual, not a copy of any commercial product.
 - **Security level**: quality (ROIC history, leverage, margins, share count), Magic
   Formula score, margin-of-safety band, moat and circle-of-competence (manual).
 - **Sizing**: conviction score vs position size, Kelly sanity check, thesis-invalidation
