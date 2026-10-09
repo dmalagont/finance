@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#15181D;font-family:'IBM Plex Mono',monospace}a{color:#3B82F6}a:hover{color:#7AA9F8}button{font-family:inherit}@keyframes reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@keyframes flashUp{0%,82%,100%{background-color:transparent}88%{background-color:rgba(34,197,94,.3)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+</helmet>
+<section id="norway" data-screen-label="Norway panel" style="padding:40px 44px 60px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">03</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Norway panel · 1440</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><nav style="display:flex"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="6"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}">{{ n.label }}</a></sc-for></nav><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">NOK BASE · [DATE] · 07:00 CET</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<main style="padding:28px 32px 36px;display:flex;flex-direction:column;gap:40px">
+
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 14px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="grid-column:1/-1;margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">01</span><span>Panel summary</span><span style="margin-left:auto;color:#536071;font-weight:500">SAMPLE STATE</span></div>
+<div style="display:flex;flex-direction:column;gap:8px"><span style="font:italic 700 72px/.86 'Barlow Condensed',sans-serif;text-transform:uppercase">Norway</span><span style="font:500 12.5px/1.45 'IBM Plex Mono',monospace;color:#2E3947">What do rates, the krone, oil and housing mean for my NOK goals?</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-content:end">
+<sc-for list="{{ themes }}" as="t" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;gap:6px;border-top:3px solid {{ t.c }};padding-top:8px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#536071">{{ t.k }}</span><span style="font:600 11px 'IBM Plex Mono',monospace;color:{{ t.c }}">{{ t.tag }}</span><span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#2E3947">[READ]</span></div></sc-for>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:40px">
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 115ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">02</span><span>Norges Bank policy rate &amp; path</span><span tabIndex="0" onMouseEnter="{{ tips.mpr.on }}" onMouseLeave="{{ tips.mpr.off }}" onFocus="{{ tips.mpr.on }}" onBlur="{{ tips.mpr.off }}" style="margin-left:auto;color:#8693A6;font-weight:500;border-bottom:1px dotted #E8590C;cursor:help;position:relative">MPR [N]/[YEAR]<sc-if value="{{ tips.mpr.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:calc(100% + 8px);right:0;z-index:20;width:290px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal;text-align:left;font-weight:400"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;text-transform:uppercase">{{ tips.mpr.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.mpr.d }}</span></span></sc-if></span></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ rateStats }}" as="s" hint-placeholder-count="4"><div style="border-bottom:1px solid #202A36;padding:8px 10px;display:flex;flex-direction:column;gap:4px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">{{ s.k }}</span><span style="font:600 20px 'IBM Plex Mono',monospace;animation:{{ s.anim }}">{{ s.v }}</span></div></sc-for>
+</div>
+<div style="position:relative;height:230px;background:#060A0F;border:1px solid #202A36">
+<svg viewBox="0 0 1000 230" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;animation:reveal 1.6s cubic-bezier(0.77,0,0.175,1) 200ms both"><sc-for list="{{ grid }}" as="g" hint-placeholder-count="4"><line x1="0" x2="1000" y1="{{ g.y }}" y2="{{ g.y }}" stroke="#111821" stroke-width="1" vector-effect="non-scaling-stroke"></line></sc-for><polygon points="{{ rate.fan }}" fill="rgba(232,89,12,.14)"></polygon><polyline points="{{ rate.hist }}" fill="none" stroke="#B8C4D3" stroke-width="2" vector-effect="non-scaling-stroke"></polyline><polyline points="{{ rate.nb }}" fill="none" stroke="#E8590C" stroke-width="2.5" vector-effect="non-scaling-stroke"></polyline><polyline points="{{ rate.mkt }}" fill="none" stroke="#3B82F6" stroke-width="2" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"></polyline></svg>
+<span style="position:absolute;left:12px;top:10px;font:500 10.5px 'IBM Plex Mono',monospace;color:#B8C4D3;background:#000;padding:1px 5px">Policy rate · NB path with uncertainty fan · market-implied · ILLUSTRATIVE SHAPE — NOT DATA</span>
+<div style="position:absolute;top:0;bottom:0;left:62%;border-left:1px solid #8693A6"><span style="position:absolute;top:30px;left:6px;font:600 10px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:1px 5px">TODAY</span></div>
+
+<div style="position:absolute;right:10px;bottom:10px;display:flex;gap:14px;font:500 10.5px 'IBM Plex Mono',monospace"><span style="color:#E8590C">▬ Norges Bank path</span><span style="color:#3B82F6">┅ Market-implied</span><span style="color:#B8C4D3">— History</span></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px">
+<sc-for list="{{ meetings }}" as="m" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;gap:4px;padding:8px 10px;background:#111821;border-left:3px solid {{ m.c }}"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">{{ m.k }}</span><span style="font:600 12px 'IBM Plex Mono',monospace">{{ m.v }}</span><span style="font:500 9.5px 'IBM Plex Mono',monospace;color:{{ m.sc }}">{{ m.src }}</span></div></sc-for>
+</div>
+</div>
+
+<div style="padding:0;display:flex;flex-direction:column;gap:0;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 170ms both">
+<div style="margin:0 0 6px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">03</span><span tabIndex="0" onMouseEnter="{{ tips.i44.on }}" onMouseLeave="{{ tips.i44.off }}" onFocus="{{ tips.i44.on }}" onBlur="{{ tips.i44.off }}" style="border-bottom:1px dotted #E8590C;cursor:help;position:relative">The krone<sc-if value="{{ tips.i44.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:calc(100% + 8px);left:0;z-index:20;width:290px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal;text-align:left;font-weight:400"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;text-transform:uppercase">{{ tips.i44.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.i44.d }}</span></span></sc-if></span></div>
+<sc-for list="{{ nok }}" as="d" hint-placeholder-count="3">
+<a href="Investment Cockpit.dc.html#indicator-detail" style="display:flex;flex-direction:column;gap:5px;padding:10px 0;border-bottom:1px solid #202A36;text-decoration:none;color:#EAF0F7">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em">{{ d.k }}</span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid {{ d.c }};color:{{ d.c }}">{{ d.tag }}</span></div>
+<span style="font:600 24px/1 'IBM Plex Mono',monospace">––.––</span>
+<div style="position:relative;height:4px;background:#111821;margin-top:3px"><div style="position:absolute;top:-4px;left:50%;width:2px;height:12px;background:#8693A6"></div></div>
+<div style="display:flex;justify-content:space-between;font:400 9.5px 'IBM Plex Mono',monospace;color:#8693A6"><span>52W LOW ––.––</span><span>HIGH ––.––</span></div>
+<span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#B8C4D3">{{ d.note }}</span>
+</a>
+</sc-for>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 32px">
+<sc-for list="{{ cells }}" as="c" hint-placeholder-count="8">
+<a href="Investment Cockpit.dc.html#indicator-detail" style="padding:0;display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#EAF0F7;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) {{ c.delay }} both" style-hover="background:#0B1118">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:8px;font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">{{ c.idx }}</span><span>{{ c.k }}</span><span style="margin-left:auto;color:{{ c.c }}">{{ c.tag }}</span></div>
+<span style="font:600 24px/1 'IBM Plex Mono',monospace">––.––<span style="font-size:11px;color:#8693A6;margin-left:4px">{{ c.unit }}</span></span>
+<div style="position:relative;height:36px;background:#000;border:1px solid #202A36"><svg viewBox="0 0 100 36" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><polyline points="{{ c.spark }}" fill="none" stroke="{{ c.c }}" stroke-width="1.5" vector-effect="non-scaling-stroke"></polyline></svg><span style="position:absolute;left:5px;top:2px;font:500 9px 'IBM Plex Mono',monospace;color:#5D6878">10Y · ILLUSTRATIVE</span></div>
+<span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">{{ c.line }}</span>
+<span style="font:500 10px 'IBM Plex Mono',monospace;color:#8693A6;border-top:1px solid #202A36;padding-top:6px">{{ c.src }}</span>
+</a>
+</sc-for>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px">
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 600ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">14</span><span>Oil fund &amp; fiscal rule</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<div style="border-bottom:1px solid #202A36;padding:8px 10px;display:flex;flex-direction:column;gap:4px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">GPFG MARKET VALUE</span><span style="font:600 22px 'IBM Plex Mono',monospace">––.–– <span style="font-size:11px;color:#8693A6">NOK tn</span></span></div>
+<div style="border-bottom:1px solid #202A36;padding:8px 10px;display:flex;flex-direction:column;gap:4px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">OIL MONEY SPENT · BUDGET [YEAR]</span><span style="font:600 22px 'IBM Plex Mono',monospace">––.–– <span style="font-size:11px;color:#8693A6">% of fund</span></span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="position:relative;height:10px;background:#111821"><div style="position:absolute;top:-5px;left:60%;width:2px;height:20px;background:#E8590C"></div><span tabIndex="0" onMouseEnter="{{ tips.rule.on }}" onMouseLeave="{{ tips.rule.off }}" onFocus="{{ tips.rule.on }}" onBlur="{{ tips.rule.off }}" style="position:absolute;top:-20px;left:60%;transform:translateX(-50%);font:600 10px 'IBM Plex Mono',monospace;color:#E8590C;border-bottom:1px dotted #E8590C;cursor:help">3% RULE<sc-if value="{{ tips.rule.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:calc(100% + 8px);left:-140px;z-index:20;width:290px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal;text-align:left;font-weight:400"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;text-transform:uppercase">{{ tips.rule.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.rule.d }}</span></span></sc-if></span></div>
+<div style="display:flex;justify-content:space-between;font:400 9.5px 'IBM Plex Mono',monospace;color:#8693A6"><span>0%</span><span>5%</span></div>
+</div>
+<span style="font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">The fiscal rule lets the government spend, over time, about the fund's expected real return — set at 3% of its value. A falling krone or rising markets grow the fund in NOK; a crash shrinks the room.</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 655ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">15</span><span>Learn · Norwegian tax notes</span><span style="margin-left:auto;color:#8693A6;font-weight:500">RULES CHANGE YEARLY · VERIFY ON SKATTEETATEN.NO</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ tax }}" as="x" hint-placeholder-count="3"><div style="border-bottom:1px solid #202A36;padding:10px 12px;display:flex;flex-direction:column;gap:6px"><span style="font:italic 700 24px/.95 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ x.k }}</span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#E8590C">{{ x.sub }}</span><span style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">{{ x.v }}</span><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#8693A6">{{ x.fig }}</span><a href="#" style="font:500 10.5px 'IBM Plex Mono',monospace;color:#3B82F6">Lesson →</a></div></sc-for>
+</div>
+</div>
+</div>
+</main>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { tip: null };
+  renderVals() {
+    const UP = '#22C55E', DN = '#EF4444', WA = '#FFB84D';
+    const T = { c: ['▼ CALM', UP], w: ['◆ WATCH', WA], a: ['▲ ALERT', DN] };
+    const nav = ['Council', 'Panels', 'Norway', 'Portfolio', 'Journal', 'Learn'].map((label, i) => ({ label, ink: i === 2 ? '#EAF0F7' : '#8693A6', bar: i === 2 ? 'inset 0 0 0 200px #111821' : 'none' }));
+    const LT = { c: ['▼ CALM', '#0A7A42'], w: ['◆ WATCH', '#855600'], a: ['▲ ALERT', '#C01E2D'] };
+    const themes = [['RATES', 'w'], ['KRONE', 'a'], ['HOUSEHOLDS', 'w'], ['OIL & FISCAL', 'c']].map(([k, s]) => ({ k, tag: LT[s][0], c: LT[s][1] }));
+    const rateStats = [
+      { k: 'POLICY RATE', v: '––.––%', anim: 'flashUp 5s ease-out 2s infinite' }, { k: 'LAST DECISION', v: '[DATE] · HOLD', anim: 'none' },
+      { k: 'NEXT MEETING', v: '[DATE]', anim: 'none' }, { k: 'PATH · 12M AHEAD', v: '––.––%', anim: 'none' },
+    ];
+    const meetings = [
+      { k: 'NEXT MEETING · CUT', v: '––%', src: 'MARKET-IMPLIED', sc: '#3B82F6', c: '#3B82F6' },
+      { k: 'NEXT MEETING · CUT', v: '––%', src: 'MODEL', sc: '#FF9A5C', c: '#FF9A5C' },
+      { k: 'CUT · BASE RATE', v: '––%', src: 'BASE RATE · n=––', sc: '#B8C4D3', c: '#B8C4D3' },
+      { k: 'CUT · MY ESTIMATE', v: '––%', src: 'MY ESTIMATE', sc: '#EAF0F7', c: '#EAF0F7' },
+    ];
+    const nok = [
+      { k: 'I-44 · TRADE-WEIGHTED', s: 'a', note: 'Higher = weaker krone. Imports dearer, foreign assets worth more in NOK.' },
+      { k: 'EUR / NOK', s: 'a', note: 'Most of Norway\u2019s trade. Matters for imported inflation and rate path.' },
+      { k: 'USD / NOK', s: 'w', note: 'Drives NOK value of global equities and oil revenue.' },
+    ].map(d => ({ ...d, tag: T[d.s][0], c: T[d.s][1] }));
+    const cells = [
+      ['NOWA', '%', 'w', 'Overnight rate banks pay each other in NOK — the rate Norges Bank actually steers.', 'Norges Bank · daily'],
+      ['Norway 10y', '%', 'w', 'Long government borrowing cost. Sets the tone for fixed mortgages and valuations.', 'Norges Bank · daily'],
+      ['CPI-ATE', '% y/y', 'a', 'Core inflation, excluding energy and tax changes. Norges Bank targets 2% inflation over time.', 'SSB · monthly'],
+      ['Mainland GDP', '% q/q', 'c', 'Economy excluding oil, gas and shipping — the part most households live in.', 'SSB · quarterly'],
+      ['Unemployment', '%', 'c', 'Registered (NAV) and survey (LFS) rates. Rising joblessness eases wage and price pressure.', 'NAV · SSB · monthly'],
+      ['Household debt', '% of income', 'w', 'Among the highest in the world, around 230–240% of income and mostly floating rate — so rate moves hit spending fast.', 'SSB · Norges Bank · quarterly'],
+      ['House prices', '% y/y', 'w', 'Most household wealth sits in housing. Falling prices plus floating debt can slow consumption.', 'Eiendom Norge · monthly'],
+      ['Brent crude', 'USD/bbl', 'c', 'Oil and gas exports support the krone and fill the oil fund.', 'ICE · daily'],
+    ].map(([k, unit, s, line, src], i) => ({ k, unit, line, src, tag: T[s][0], c: T[s][1], idx: String(i + 4).padStart(2, '0'), delay: 230 + i * 55 + 'ms' }));
+    const tax = [
+      { k: 'ASK', sub: 'AKSJESPAREKONTO', v: 'Buy and sell listed shares and equity funds inside the account without tax on each gain. Tax is due only when you take out more than you paid in.', fig: 'Fund equity share > [80]% · shield rate [RATE]' },
+      { k: 'Formuesskatt', sub: 'WEALTH TAX', v: 'An annual tax on net wealth above a threshold. Shares and funds are valued at a discount, so the tax depends on what you hold, not just how much.', fig: 'Threshold [NOK] · share discount [N]%' },
+      { k: 'IPS', sub: 'INDIVIDUAL PENSION SAVINGS', v: 'Contributions are tax-deductible up to a yearly limit. Money is locked until age 62 and paid out over at least ten years, taxed as pension income.', fig: 'Annual limit [NOK] · deduction rate [N]%' },
+    ];
+    const series = (seed, n, bumps) => { let s = seed; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+      let v = 0; const raw = []; for (let i = 0; i < n; i++) { v = v * 0.96 + (r() - 0.5) * 0.35; let y = v; bumps.forEach(([at, amp, w]) => { const d = (i / (n - 1) - at) / w; y += amp * Math.exp(-d * d); }); raw.push(y); }
+      const lo = Math.min(...raw), hi = Math.max(...raw); return raw.map(y => 0.12 + 0.76 * (y - lo) / (hi - lo || 1)); };
+    const toPts = (vals, W, H) => vals.map((v, i) => `${(i / (vals.length - 1) * W).toFixed(1)},${((1 - v) * H).toFixed(1)}`).join(' ');
+    const tip = (k, t, d) => ({ t, d, open: this.state.tip === k, on: () => this.setState({ tip: k }), off: () => this.setState({ tip: null }) });
+    const cells2 = cells.map((c, i) => ({ ...c, spark: toPts(series(201 + i * 13, 80, [[0.7, (i % 2 ? 1.5 : -1.2), 0.15]]), 100, 36) }));
+    const step = (pts, W, H) => pts.map(([x, y], i) => i ? `${(x * W).toFixed(1)},${((1 - pts[i - 1][1]) * H).toFixed(1)} ${(x * W).toFixed(1)},${((1 - y) * H).toFixed(1)}` : `${x * W},${(1 - y) * H}`).join(' ');
+    const histP = [[0, .45], [.06, .38], [.1, .25], [.16, .18], [.24, .15], [.3, .12], [.36, .2], [.4, .3], [.44, .45], [.48, .6], [.52, .7], [.56, .75], [.62, .75]];
+    const W = 1000, Hh = 230, xs = [.62, .7, .78, .86, .94, 1], nbY = [.75, .72, .66, .6, .55, .52];
+    const rate = { hist: step(histP, W, Hh),
+      nb: xs.map((x, i) => `${x * W},${(1 - nbY[i]) * Hh}`).join(' '),
+      mkt: xs.map((x, i) => `${x * W},${(1 - (nbY[i] - i * 0.025)) * Hh}`).join(' '),
+      fan: [...xs.map((x, i) => `${x * W},${(1 - (nbY[i] + i * 0.04)) * Hh}`), ...xs.slice().reverse().map((x, j) => { const i = xs.length - 1 - j; return `${x * W},${(1 - (nbY[i] - i * 0.05)) * Hh}`; })].join(' ') };
+    const grid = [0.25, 0.5, 0.75].map(f => ({ y: f * Hh }));
+    const tips = {
+      mpr: tip('mpr', 'Monetary Policy Report', 'Published by Norges Bank four times a year with a projected path for the policy rate. The fan shows how uncertain that path is.'),
+      rule: tip('rule', 'The fiscal rule', 'Over time the government spends roughly the fund’s expected real return, set at 3% of its value. It can spend more in downturns and less in booms.'),
+      i44: tip('i44', 'Reading the krone', 'I-44 is a trade-weighted index against 44 trading partners. Higher means a weaker krone. EURNOK and USDNOK higher also mean a weaker krone.'),
+    };
+    return { nav, themes, rateStats, meetings, nok, cells: cells2, tax, rate, grid, tips };
+  }
+}
+</script>
+</body>
+</html>

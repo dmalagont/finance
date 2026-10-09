@@ -269,14 +269,22 @@ docs/              DESIGN.md, ADRs
 
 ## 8. Design (Claude Design)
 
-1. **Design system**: colour tokens incl. chart palette and green/amber/red states,
-   typography for dense numbers + readable prose, light and dark themes.
-2. **Components**: indicator card with explainer, council gauge, regime quadrant,
-   temperature dial, timeline with event markers, probability fan chart, concept tooltip,
-   quote block.
-3. **Screens**: Council home ("what changed"), panel page (e.g. Liquidity), indicator
-   detail (past / present / probabilities), Portfolio lab, Journal, Learn library.
-4. **Handoff**: tokens → Tailwind config; components → shadcn/ui.
+**Source of truth:** the Claude Design handoff in [`design/handoff/`](../design/handoff/README.md)
+(high fidelity). Design system **"Gunmetal Ember"** (option 14c) with the approved **open
+layout**; it supersedes the earlier "Polar Night" and "Nordic Terminal" explorations and the
+canvas brief in `docs/design-brief.md`.
+
+- Tokens, components, plot rules and motion: `design/handoff/README.md` and
+  `design/handoff/DESIGN_RULES.md`.
+- Screens (open `designs/*.dc.html` in a browser next to `support.js`): Council home
+  (`Council Home Open` approved), Indicator detail, Panel template, Norway panel, Portfolio
+  lab, Journal + red team, Learn + pendulum lesson, Mobile, States / first run, Design system.
+- Build mapping: tokens → Tailwind theme; shared components (SectionHeader, CouncilGauge,
+  StateTag, SourceTag, PostureSelector, DataCell, ExplainerCard, QuoteBlock, ConceptTooltip,
+  Ticker, CommandLine, Buttons) → shadcn/ui primitives restyled with radius 0.
+- Rules that carry into code: never ship invented data (placeholders + loading/stale/error
+  until wired); quotes only with a verifiable source; probability sources never blended;
+  regimes never green/red; failed sources make reads INCOMPLETE, never calm.
 
 ---
 

@@ -1,5 +1,8 @@
 # Design brief — Investment Cockpit (for Claude Design)
 
+> **Superseded:** this brief produced the Claude Design exploration. The chosen design is now
+> the handoff in [`design/handoff/`](../design/handoff/README.md) ("Gunmetal Ember", open layout).
+
 **Canvas:** https://claude.ai/artifact/WGBMUyDkqNAi9NAUM4DJG5 — continue on this canvas; keep its three artboards (Council home, Indicator detail, Design system) as the baseline.
 
 ## What it is

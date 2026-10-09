@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#15181D;font-family:'IBM Plex Mono',monospace}a{color:#3B82F6}a:hover{color:#7AA9F8}button{font-family:inherit}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@keyframes reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@keyframes live{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}100%{box-shadow:0 0 0 7px rgba(34,197,94,0)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+</helmet>
+<section id="panel-liquidity" data-screen-label="Panel template · Liquidity" style="padding:40px 44px 60px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">P</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Panel page template · example: Liquidity · reused for Macro, Cycle, Value, Stress, Norway</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><nav style="display:flex"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="6"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}">{{ n.label }}</a></sc-for></nav><span style="margin-left:auto;display:flex;align-items:center;gap:7px;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6"><span style="width:7px;height:7px;border-radius:50%;background:#22C55E;animation:live 2s ease-out infinite"></span>LIVE · [DATE]</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="display:flex;border-bottom:1px solid #202A36;background:#060A0F">
+<sc-for list="{{ panels }}" as="p" hint-placeholder-count="6"><button onClick="{{ p.pick }}" style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border:0;border-right:1px solid #202A36;cursor:pointer;outline:none;background:{{ p.bg }};color:{{ p.ink }};box-shadow:{{ p.bar }}" style-focus="outline:1px solid #E8590C;outline-offset:-3px" style-hover="color:#EAF0F7">{{ p.label }} <span style="color:{{ p.c }}">■</span></button></sc-for>
+</div>
+<main style="padding:28px 32px 36px;display:flex;flex-direction:column;gap:40px">
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 16px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr) minmax(0,3fr);gap:24px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="grid-column:1/-1;margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">01</span><span>Panel summary</span><span style="margin-left:auto;color:#536071;font-weight:500">SAMPLE STATE · UPDATED [DATE]</span></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:italic 700 72px/.86 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ cur.title }}</span>
+<span style="font:500 12.5px/1.45 'IBM Plex Mono',monospace;color:#2E3947">{{ cur.q }}</span>
+<span style="font:500 11px 'IBM Plex Mono',monospace;color:#536071">Lead voice · <b style="color:#0A0F16">{{ cur.lead }}</b></span>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<span tabIndex="0" onMouseEnter="{{ tips.read.on }}" onMouseLeave="{{ tips.read.off }}" onFocus="{{ tips.read.on }}" onBlur="{{ tips.read.off }}" style="align-self:flex-start;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#536071;border-bottom:1px dotted #E8590C;cursor:help;position:relative">PANEL READ<sc-if value="{{ tips.read.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:calc(100% + 8px);left:0;z-index:20;width:290px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal;text-align:left;font-weight:400"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;text-transform:uppercase">{{ tips.read.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.read.d }}</span></span></sc-if></span>
+<div style="display:flex;align-items:center;gap:12px"><span style="display:flex;gap:2px;animation:reveal 420ms cubic-bezier(0.23,1,0.32,1) 360ms both"><sc-for list="{{ panelSegs }}" as="g" hint-placeholder-count="5"><span style="width:28px;height:14px;background:{{ g.bg }}"></span></sc-for></span><span style="font:700 16px 'IBM Plex Mono',monospace;color:#855600">3/5</span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#D3DBE5;border-left:3px solid #855600;color:#855600">◆ WATCH</span></div>
+<span style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:#2E3947">[ONE-SENTENCE PANEL SUMMARY — what the indicators say together, and where they disagree]</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span tabIndex="0" onMouseEnter="{{ tips.mix.on }}" onMouseLeave="{{ tips.mix.off }}" onFocus="{{ tips.mix.on }}" onBlur="{{ tips.mix.off }}" style="align-self:flex-start;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#536071;border-bottom:1px dotted #E8590C;cursor:help;position:relative">SIGNAL MIX<sc-if value="{{ tips.mix.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:calc(100% + 8px);left:0;z-index:20;width:290px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal;text-align:left;font-weight:400"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;text-transform:uppercase">{{ tips.mix.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.mix.d }}</span></span></sc-if></span>
+<sc-for list="{{ mix }}" as="x" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:80px minmax(0,1fr) 24px;gap:8px;align-items:center;font:600 10.5px 'IBM Plex Mono',monospace;color:{{ x.c }}"><span>{{ x.label }}</span><span style="height:8px;background:#D3DBE5;position:relative"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ x.w }};background:{{ x.c }}"></span></span><span style="text-align:right">{{ x.n }}</span></div></sc-for>
+<span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#536071;margin-top:4px">Counts of indicators by state · sample</span>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 32px">
+<sc-for list="{{ cards }}" as="c" hint-placeholder-count="8">
+<a href="Investment Cockpit.dc.html#indicator-detail" style="padding:0;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:#EAF0F7;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) {{ c.delay }} both" style-hover="border-color:#3A4757;background:#0B1118">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:8px;align-items:baseline;font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">{{ c.idx }}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.name }}</span><span style="margin-left:auto;color:#8693A6;font-weight:500;flex:none">{{ c.freq }}</span></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-end"><span style="font:600 26px/1 'IBM Plex Mono',monospace">––.––<span style="font-size:12px;color:#8693A6;margin-left:4px">{{ c.unit }}</span></span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid {{ c.c }};color:{{ c.c }}">{{ c.tag }}</span></div>
+<div style="position:relative;height:46px;background:#000;border:1px solid #202A36"><svg viewBox="0 0 100 46" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><polygon points="{{ c.area }}" fill="{{ c.fill }}"></polygon><polyline points="{{ c.spark }}" fill="none" stroke="{{ c.c }}" stroke-width="1.5" vector-effect="non-scaling-stroke"></polyline></svg><span style="position:absolute;right:-3px;top:{{ c.lastTop }};width:6px;height:6px;margin-top:-3px;background:{{ c.c }}"></span><span style="position:absolute;left:5px;top:3px;font:500 9px 'IBM Plex Mono',monospace;color:#5D6878">5Y · ILLUSTRATIVE</span></div>
+<span style="font:400 11.5px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3;min-height:50px;text-wrap:pretty">{{ c.line }}</span>
+<div style="display:flex;justify-content:space-between;font:500 10.5px 'IBM Plex Mono',monospace;color:#8693A6;border-top:1px solid #202A36;padding-top:7px"><span>{{ c.src }}</span><span style="color:#3B82F6">Detail →</span></div>
+</a>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:40px">
+<div style="padding:0;display:flex;flex-direction:column;gap:8px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">10</span><span>How this panel works</span></div>
+<span style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">{{ cur.how }}</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:8px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">11</span><span>Template slots</span></div>
+<span style="font:400 11px/1.6 'IBM Plex Mono',monospace;color:#8693A6">Summary (light) · 6–8 indicator cards · how-it-works · per panel: title, lead voice, question, card list. Click a tab above to preview each panel.</span>
+</div>
+</div>
+</main>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { p: 'Liquidity' };
+  renderVals() {
+    const UP = '#22C55E', DN = '#EF4444', WA = '#FFB84D';
+    const T = { c: ['▼ CALM', UP], w: ['◆ WATCH', WA], a: ['▲ ALERT', DN] };
+    const nav = ['Council', 'Panels', 'Norway', 'Portfolio', 'Journal', 'Learn'].map((label, i) => ({ label, ink: i === 1 ? '#EAF0F7' : '#8693A6', bar: i === 1 ? 'inset 0 0 0 200px #111821' : 'none' }));
+    const P = {
+      Liquidity: { lead: 'Stanley Druckenmiller', q: 'Where is liquidity going, and does price confirm it?',
+        how: 'Liquidity is the amount of money and credit available to chase assets. When central banks add reserves or credit eases, asset prices tend to be supported; when liquidity drains, risk assets lose a tailwind. Cards read level and direction; the panel turns Alert when most drain together and price stops confirming.',
+        cards: [
+          ['Fed balance sheet', 'W', 'USD tn', 'w', 'Assets held by the Federal Reserve. Growing adds reserves to the system; shrinking (QT) drains them.', 'FRED · WALCL'],
+          ['US net liquidity', 'W', 'USD tn', 'w', 'Fed assets minus Treasury cash account and reverse repo — a rough gauge of money free to reach markets.', 'Derived · FRED'],
+          ['M2 money supply', 'M', '% y/y', 'c', 'Broad money held by households and firms. Fast growth tends to inflate assets; contraction is rare and tightening.', 'FRED · M2SL'],
+          ['Global CB balance sheets', 'M', 'USD tn', 'w', 'Fed, ECB, BoJ and PBoC combined in dollars. The global tide most risk assets swim in.', 'Central banks'],
+          ['US dollar index', 'D', 'index', 'a', 'A stronger dollar tightens conditions for the world, because so much debt and trade is priced in dollars.', 'ICE · DXY'],
+          ['Financial conditions', 'W', 'index', 'c', 'One number for how easy it is to borrow: rates, spreads, equity and volatility combined. Above zero is tight.', 'Chicago Fed · NFCI'],
+          ['US 10y real yield', 'D', '%', 'w', 'Treasury yield after expected inflation. Rising real yields raise the hurdle for every other asset.', 'FRED · DFII10'],
+          ['Price confirmation', 'D', '% > 200d', 'c', 'Share of global stocks above their 200-day average. Liquidity matters only if price agrees.', 'Market data'],
+        ] },
+      Macro: { lead: 'Ray Dalio', q: 'Is growth rising or falling, and is inflation rising or falling?', how: 'Template example: growth and inflation surprises, PMIs, jobs and inflation trend.', cards: [] },
+      Cycle: { lead: 'Ray Dalio', q: 'Where are we in the short-term and long-term debt cycle?', how: 'Template example: debt service, credit growth, yield curve, policy room.', cards: [] },
+      Value: { lead: 'Buffett & Greenblatt', q: 'Are we paying a sensible price?', how: 'Template example: CAPE, earnings yield vs bonds, equity risk premium, my holdings vs fair value.', cards: [] },
+      Stress: { lead: 'Howard Marks · Taleb & Spitznagel', q: 'How hot are psychology and credit, and where is fragility?', how: 'Template example: HY spreads, VIX, skew, funding stress, sentiment surveys.', cards: [] },
+      Norway: { lead: 'Bernstein & Bogle', q: 'What does Norway mean for my NOK goals?', how: 'See the full Norway panel for the expanded version of this template.', cards: [] },
+    };
+    const mixS = ['c', 'w', 'a', 'w', 'c', 'w', 'a', 'w'];
+    const cur = { title: this.state.p, ...P[this.state.p] };
+    const list = cur.cards.length ? cur.cards : Array.from({ length: 8 }, (_, i) => [`[INDICATOR ${i + 1}]`, '–', '', mixS[i], '[One-line plain-language explanation of what this measures and why it matters]', '[SOURCE]']);
+    const cards = list.map(([name, freq, unit, s, line, src], i) => ({ name, freq, unit, line, src, tag: T[s][0], c: T[s][1],
+      idx: String(i + 2).padStart(2, '0'), delay: 120 + i * 55 + 'ms' }));
+    const cnt = k => list.filter(c => c[3] === k).length;
+    const mix = [['CALM', 'c', UP], ['WATCH', 'w', WA], ['ALERT', 'a', DN]].map(([label, k, c]) => ({ label, c: k === 'c' ? '#0A7A42' : k === 'w' ? '#855600' : '#C01E2D', n: cnt(k), w: cnt(k) / list.length * 100 + '%' }));
+    const panelColor = { Macro: WA, Cycle: WA, Value: DN, Stress: DN, Liquidity: WA, Norway: WA };
+    const panels = Object.keys(P).map(label => ({ label, c: panelColor[label], pick: () => this.setState({ p: label }),
+      bg: this.state.p === label ? '#111821' : '#060A0F', ink: this.state.p === label ? '#EAF0F7' : '#8693A6', bar: this.state.p === label ? 'inset 0 -1px 0 #111821' : 'none' }));
+    const panelSegs = [1, 2, 3, 4, 5].map(i => ({ bg: i <= 3 ? '#855600' : '#D3DBE5' }));
+    const series = (seed, n, bumps) => { let s = seed; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+      let v = 0; const raw = []; for (let i = 0; i < n; i++) { v = v * 0.96 + (r() - 0.5) * 0.35; let y = v; bumps.forEach(([at, amp, w]) => { const d = (i / (n - 1) - at) / w; y += amp * Math.exp(-d * d); }); raw.push(y); }
+      const lo = Math.min(...raw), hi = Math.max(...raw); return raw.map(y => 0.12 + 0.76 * (y - lo) / (hi - lo || 1)); };
+    const toPts = (vals, W, H) => vals.map((v, i) => `${(i / (vals.length - 1) * W).toFixed(1)},${((1 - v) * H).toFixed(1)}`).join(' ');
+    const tip = (k, t, d) => ({ t, d, open: this.state.tip === k, on: () => this.setState({ tip: k }), off: () => this.setState({ tip: null }) });
+    const fills = { [UP]: 'rgba(34,197,94,.10)', [WA]: 'rgba(255,184,77,.10)', [DN]: 'rgba(239,68,68,.10)' };
+    const cards2 = cards.map((c, i) => { const v = series(101 + i * 17, 60, [[0.85 + (i % 3) * 0.05, (i % 2 ? -1 : 1) * 1.4, 0.1]]); const p = toPts(v, 100, 46);
+      return { ...c, spark: p, area: `0,46 ${p} 100,46`, fill: fills[c.c], lastTop: (1 - v[v.length - 1]) * 100 + '%' }; });
+    const tips = {
+      mix: tip('mix', 'Signal mix', 'How many indicators in this panel are calm, on watch or on alert. A split mix means the panel disagrees with itself — read the cards.'),
+      read: tip('read', 'Panel read', 'The lead voice scores the panel 1–5 from the cards below. It is a judgement, not an average, and always names what drives it.'),
+    };
+    return { nav, panels, cur, cards: cards2, mix, panelSegs, tips };
+  }
+}
+</script>
+</body>
+</html>

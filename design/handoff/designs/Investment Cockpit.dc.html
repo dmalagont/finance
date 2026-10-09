@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#15181D;font-family:'IBM Plex Mono',monospace}a{color:#3B82F6}a:hover{color:#7AA9F8}button{font-family:inherit}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@keyframes reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@keyframes marquee{to{transform:translateX(-50%)}}@keyframes flashUp{0%,82%,100%{background-color:transparent}88%{background-color:rgba(34,197,94,.3)}}@keyframes shimmer{to{background-position:-200% 0}}@keyframes live{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}100%{box-shadow:0 0 0 7px rgba(34,197,94,0)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+</helmet>
+
+<section id="index" style="padding:40px 44px 0">
+<div style="width:1440px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">
+<span style="color:#EAF0F7;background:#E8590C;padding:6px 10px;margin-right:8px">DESIGN LIST →</span>
+<a href="Council Home Directions.dc.html" style="padding:6px 10px;background:#000;color:#EAF0F7;text-decoration:none">R1 · COUNCIL HOME A/B/C</a>
+<a href="Panel Template.dc.html" style="padding:6px 10px;background:#000;color:#EAF0F7;text-decoration:none">R1 · PANEL TEMPLATE</a>
+<a href="Norway Panel.dc.html" style="padding:6px 10px;background:#000;color:#EAF0F7;text-decoration:none">R2 · NORWAY</a>
+<a href="Portfolio Lab.dc.html" style="padding:6px 10px;background:#000;color:#EAF0F7;text-decoration:none">R2 · PORTFOLIO LAB</a>
+<a href="Journal.dc.html" style="padding:6px 10px;background:#000;color:#EAF0F7;text-decoration:none">R2 · JOURNAL PROTOTYPE</a>
+<a href="Learn.dc.html" style="padding:6px 10px;background:#000;color:#EAF0F7;text-decoration:none">R3 · LEARN + LESSON</a>
+<a href="Mobile.dc.html" style="padding:6px 10px;background:#000;color:#EAF0F7;text-decoration:none">R3 · MOBILE</a>
+<a href="States.dc.html" style="padding:6px 10px;background:#000;color:#EAF0F7;text-decoration:none">R3 · STATES</a>
+</div>
+</section>
+<section id="council-home" data-screen-label="01 Council home" style="padding:40px 44px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">01</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Council home · 1440</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36">
+<div style="display:flex;align-items:baseline;gap:8px"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.01em;color:#EAF0F7">Cockpit</span><span style="font:600 10px 'IBM Plex Mono',monospace;color:#8693A6;letter-spacing:.08em">NOK</span></div>
+<nav style="display:flex;gap:2px">
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="6"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}" style-hover="color:#EAF0F7">{{ n.label }}</a></sc-for>
+</nav>
+<div style="margin-left:auto;display:flex;align-items:center;gap:16px;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">
+<span>[DATE] · 07:00 CET</span>
+<span style="display:flex;align-items:center;gap:7px;color:#B8C4D3"><span style="width:7px;height:7px;border-radius:50%;background:#22C55E;animation:live 2s ease-out infinite"></span>LIVE</span>
+<span style="padding:3px 7px;border:1px solid #202A36;color:#B8C4D3">MONITORING · NOT ADVICE</span>
+</div>
+</header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="overflow:hidden;border-bottom:1px solid #202A36;background:#060A0F">
+<div style="display:flex;width:max-content;animation:marquee 70s linear infinite" style-hover="animation-play-state:paused">
+<sc-for list="{{ ticker }}" as="k" hint-placeholder-count="14"><span style="display:flex;gap:9px;align-items:baseline;padding:8px 18px;border-right:1px solid #202A36;font:500 11.5px 'IBM Plex Mono',monospace;color:#8693A6;white-space:nowrap"><span>{{ k.sym }}</span><span style="color:#EAF0F7">––.––</span><span>±––.––%</span></span></sc-for>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:12px;padding:8px 20px;border-bottom:1px solid #202A36;font:500 12px 'IBM Plex Mono',monospace">
+<span style="color:#E8590C;font-weight:700">›</span><span style="color:#8693A6">Jump to an indicator, member or concept — e.g. HY OAS, Marks, convexity</span><span style="margin-left:auto;padding:1px 6px;border:1px solid #202A36;color:#8693A6">⌘K</span>
+</div>
+
+<main style="padding:28px 32px 36px;display:flex;flex-direction:column;gap:40px">
+<div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr) minmax(0,3fr);gap:40px">
+
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 14px;display:flex;flex-direction:column;gap:14px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">01</span><span>Posture</span><span style="margin-left:auto;color:#536071;font-weight:500">SAMPLE STATE · [DATE]</span></div>
+<div style="display:flex;align-items:flex-end;gap:16px">
+<div style="font:italic 700 76px/.86 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.005em">Cautious</div>
+<div style="padding-bottom:6px;font:500 12px/1.4 'IBM Plex Mono',monospace;color:#2E3947;max-width:280px;text-wrap:pretty">Hold risk near target. Add protection before adding exposure.</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px">
+<sc-for list="{{ steps }}" as="p" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:6px"><div style="height:14px;background:{{ p.bg }};transform:skewX(-14deg);animation:reveal 260ms cubic-bezier(0.23,1,0.32,1) {{ p.delay }} both"></div><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.04em;text-transform:uppercase;color:{{ p.ink }}">{{ p.label }}</span></div></sc-for>
+</div>
+<div style="display:flex;flex-direction:column;border-top:1px solid #C5CEDA">
+<div style="padding:8px 0 4px;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#536071">Because</div>
+<sc-for list="{{ reasons }}" as="r" hint-placeholder-count="3">
+<div style="display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:6px 0;border-top:1px solid #D3DBE5">
+<span style="font:italic 700 17px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ r.who }}</span>
+<span style="font:400 12px/1.4 'IBM Plex Mono',monospace;color:#2E3947">{{ r.why }}</span>
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#D3DBE5;border-left:3px solid {{ r.c }};color:{{ r.c }}">{{ r.tag }}</span>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:10px;align-items:center;padding-top:2px">
+<button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">Log decision</button>
+<button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border:1px solid #C5CEDA;background:#D3DBE5;color:#0A0F16;cursor:pointer" style-active="transform:scale(0.97)">Munger red team</button>
+<a href="#" style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#1C5BA8">How posture is set →</a>
+</div>
+</div>
+
+<div style="padding:0;display:flex;flex-direction:column;gap:2px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 115ms both">
+<div style="margin:0 0 6px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">02</span><span>What is happening</span><span style="margin-left:auto;color:#8693A6;font-weight:500">THIS WEEK</span></div>
+<sc-for list="{{ changes }}" as="c" hint-placeholder-count="5">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:8px 0;border-bottom:1px solid #202A36">
+<span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7">{{ c.what }}</span>
+<span style="justify-self:end;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid {{ c.c }};color:{{ c.c }}">{{ c.tag }}</span>
+<span style="grid-column:1/-1;font:400 11.5px 'IBM Plex Mono',monospace;color:#B8C4D3">{{ c.note }}</span>
+</div>
+</sc-for>
+<a href="#" style="margin-top:8px;font:500 11px 'IBM Plex Mono',monospace;color:#3B82F6">All changes since last visit →</a>
+</div>
+
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 170ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">03</span><span>What may happen</span></div>
+<sc-for list="{{ events }}" as="e" hint-placeholder-count="2">
+<div style="display:flex;flex-direction:column;gap:6px;padding-bottom:10px;border-bottom:1px solid #202A36">
+<div style="font:600 12px/1.35 'IBM Plex Mono',monospace;color:#EAF0F7;text-wrap:pretty">{{ e.q }}</div>
+<sc-for list="{{ sources }}" as="s" hint-placeholder-count="4">
+<div style="display:grid;grid-template-columns:118px 1fr auto;gap:8px;align-items:center">
+<span style="justify-self:start;font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;color:{{ s.c }};border:1px {{ s.line }} {{ s.c }}">{{ s.label }}</span>
+<span style="font:600 13px 'IBM Plex Mono',monospace;color:#EAF0F7">––%</span>
+<span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">hit ––%</span>
+</div>
+</sc-for>
+</div>
+</sc-for>
+<div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:#8693A6">Sources never blended. Hit rate = past calls that came true at the stated odds.</div>
+</div>
+</div>
+
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 225ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">04</span><span>The council</span><span tabIndex="0" onMouseEnter="{{ tips.gauge.on }}" onMouseLeave="{{ tips.gauge.off }}" onFocus="{{ tips.gauge.on }}" onBlur="{{ tips.gauge.off }}" style="position:relative;color:#8693A6;font-weight:500;text-transform:none;letter-spacing:0;border-bottom:1px dotted #E8590C;cursor:help">1 supportive → 5 risky<sc-if value="{{ tips.gauge.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;top:calc(100% + 8px);z-index:20;width:300px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-align:left;white-space:normal"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7">{{ tips.gauge.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.gauge.d }}</span></span></sc-if></span><span style="margin-left:auto;color:#8693A6;font-weight:500">SAMPLE STATES</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ council }}" as="m" hint-placeholder-count="8">
+<a href="#indicator-detail" style="border-bottom:1px solid #202A36;padding:12px;display:flex;flex-direction:column;gap:9px;text-decoration:none;color:#EAF0F7;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) {{ m.delay }} both" style-hover="background:#0B1118">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+<span style="font:italic 700 22px/.95 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ m.name }}</span>
+<span style="flex:none;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid {{ m.c }};color:{{ m.c }}">{{ m.tag }}</span>
+</div>
+<div style="font:400 11.5px/1.4 'IBM Plex Mono',monospace;color:#B8C4D3;min-height:32px;text-wrap:pretty">{{ m.q }}</div>
+<div style="display:flex;align-items:center;gap:10px">
+<div style="display:flex;gap:2px;animation:reveal 420ms cubic-bezier(0.23,1,0.32,1) {{ m.gDelay }} both"><sc-for list="{{ m.segs }}" as="g" hint-placeholder-count="5"><span style="width:16.4px;height:10px;background:{{ g.bg }}"></span></sc-for></div>
+<span style="font:700 12px 'IBM Plex Mono',monospace;color:{{ m.c }}">{{ m.n }}/5</span>
+</div>
+<div style="font:400 11.5px/1.4 'IBM Plex Mono',monospace;color:#8693A6;border-top:1px solid #202A36;padding-top:8px">[ONE-LINE READ]</div>
+</a>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center;padding:6px 0 2px">
+<div style="display:flex;flex-direction:column;gap:2px"><span tabIndex="0" onMouseEnter="{{ tips.dis.on }}" onMouseLeave="{{ tips.dis.off }}" onFocus="{{ tips.dis.on }}" onBlur="{{ tips.dis.off }}" style="position:relative;align-self:flex-start;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#EAF0F7;border-bottom:1px dotted #E8590C;cursor:help">Disagreement<sc-if value="{{ tips.dis.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;bottom:calc(100% + 8px);z-index:20;width:300px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7">{{ tips.dis.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.dis.d }}</span></span></sc-if></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">shown, never averaged</span></div>
+<div style="position:relative;height:42px">
+<div style="position:absolute;left:0;right:0;top:20px;height:2px;background:#202A36"></div>
+<sc-for list="{{ ticks }}" as="x" hint-placeholder-count="5"><div style="position:absolute;top:14px;left:{{ x.left }};width:1px;height:14px;background:#2E3947"></div><span style="position:absolute;top:30px;left:{{ x.left }};transform:translateX(-50%);font:500 10px 'IBM Plex Mono',monospace;color:#8693A6">{{ x.n }}</span></sc-for>
+<sc-for list="{{ dots }}" as="d" hint-placeholder-count="8"><span title="{{ d.name }}" style="position:absolute;left:{{ d.left }};top:{{ d.top }};transform:translateX(-50%);padding:1px 4px;font:700 9.5px 'IBM Plex Mono',monospace;background:#111821;border-left:2px solid {{ d.c }};color:#EAF0F7">{{ d.abbr }}</span></sc-for>
+</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:40px">
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 500ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">05</span><span>What happened · regimes since 2000</span><span style="margin-left:auto;color:#8693A6;font-weight:500">DALIO</span></div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:28px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="position:relative;height:170px">
+<svg viewBox="0 0 1000 170" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;animation:reveal 1.6s cubic-bezier(0.77,0,0.175,1) 600ms both"><defs><linearGradient id="hfade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAF0F7" stop-opacity=".10"></stop><stop offset="1" stop-color="#EAF0F7" stop-opacity="0"></stop></linearGradient></defs><sc-for list="{{ hGrid }}" as="g" hint-placeholder-count="3"><line x1="0" x2="1000" y1="{{ g.y }}" y2="{{ g.y }}" stroke="#16202B" stroke-width="1" vector-effect="non-scaling-stroke"></line></sc-for><polygon points="{{ homeArea }}" fill="url(#hfade)"></polygon><polyline points="{{ homeLine }}" fill="none" stroke="#EAF0F7" stroke-width="1.5" vector-effect="non-scaling-stroke"></polyline></svg>
+<sc-for list="{{ evDots }}" as="e" hint-placeholder-count="3"><div style="position:absolute;left:{{ e.left }};top:{{ e.top }};width:0;height:0"><span style="position:absolute;left:-4px;top:-4px;width:8px;height:8px;background:#E8590C;box-shadow:0 0 0 3px #000"></span><span style="position:absolute;left:-0.5px;top:10px;width:1px;height:{{ e.stem }};background:#3A4757"></span><span style="position:absolute;left:-40px;width:80px;text-align:center;top:{{ e.labelTop }};font:600 10px 'IBM Plex Mono',monospace;color:#EAF0F7;white-space:nowrap">{{ e.label }}</span></div></sc-for>
+<span style="position:absolute;right:0;top:0;font:500 10px 'IBM Plex Mono',monospace;color:#5D6878">MSCI ACWI · NOK · ILLUSTRATIVE SHAPE — NOT DATA</span>
+</div>
+<div style="display:flex;height:20px;gap:1px">
+<sc-for list="{{ regimeBand }}" as="b" hint-placeholder-count="9"><span style="width:{{ b.w }};display:flex;align-items:center;justify-content:center;overflow:hidden;background:{{ b.bg }};box-shadow:{{ b.ring }};font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.04em;color:{{ b.ink }};white-space:nowrap">{{ b.label }}</span></sc-for>
+</div>
+<div style="position:relative;height:14px"><sc-for list="{{ years }}" as="y" hint-placeholder-count="7"><span style="position:absolute;left:{{ y.left }};transform:translateX(-50%);font:500 9.5px 'IBM Plex Mono',monospace;color:#5D6878">{{ y.t }}</span></sc-for></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">YOU ARE HERE</span>
+<div style="position:relative;width:170px;height:170px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:1px;background:#202A36">
+<sc-for list="{{ quad }}" as="q" hint-placeholder-count="4"><div style="background:{{ q.bg }};padding:6px;display:flex;flex-direction:column;justify-content:{{ q.just }};font:600 9.5px/1.3 'IBM Plex Mono',monospace;color:{{ q.ink }}">{{ q.k }}</div></sc-for>
+<svg viewBox="0 0 170 170" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"><polyline points="{{ trail }}" fill="none" stroke="#8693A6" stroke-width="1" stroke-dasharray="3 3"></polyline></svg>
+<span style="position:absolute;left:{{ here.x }};top:{{ here.y }};width:10px;height:10px;margin:-5px 0 0 -5px;background:#E8590C;box-shadow:0 0 0 3px #000"></span>
+</div>
+<span style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:#8693A6">Dashed trail = last [N] quarters · sample position</span>
+</div>
+</div>
+</div>
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 14px;display:flex;flex-direction:column;gap:12px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 555ms both">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">06</span><span>From the council</span></div>
+<div style="font:italic 700 27px/1.02 'Barlow Condensed',sans-serif;text-transform:uppercase;text-wrap:pretty">“We simply attempt to be fearful when others are greedy and to be greedy only when others are fearful.”</div>
+<div style="font:400 11px 'IBM Plex Mono',monospace;color:#536071">— Warren Buffett · Berkshire Hathaway shareholder letter, 1986</div>
+<a href="#" style="font:500 11px 'IBM Plex Mono',monospace;color:#1C5BA8">Lesson: the pendulum of sentiment →</a>
+</div>
+</div>
+</main>
+</div>
+</section>
+
+<section id="indicator-detail" data-screen-label="02 Indicator detail" style="padding:40px 44px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">02</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Indicator detail · 1440</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36">
+<span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span>
+<div style="font:500 11px 'IBM Plex Mono',monospace;color:#8693A6;letter-spacing:.06em"><a href="#council-home" style="color:#8693A6;text-decoration:none" style-hover="color:#EAF0F7">COUNCIL</a> / <a href="#" style="color:#8693A6;text-decoration:none">MARKS · CREDIT</a> / <span style="color:#EAF0F7">HY OAS</span></div>
+<span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">[DATE] · 07:00 CET</span>
+</header>
+<div style="height:2px;background:#E8590C"></div>
+
+<main style="padding:28px 32px 36px;display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:40px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:36px">
+<div style="padding:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 24px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8693A6">Credit · US high yield · daily</span>
+<h1 style="margin:0;font:italic 700 52px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">High-yield credit spread</h1>
+<span style="font:400 12px 'IBM Plex Mono',monospace;color:#B8C4D3"><span tabIndex="0" onMouseEnter="{{ tips.oas.on }}" onMouseLeave="{{ tips.oas.off }}" onFocus="{{ tips.oas.on }}" onBlur="{{ tips.oas.off }}" style="position:relative;color:#EAF0F7;border-bottom:1px dotted #E8590C;cursor:help">Option-adjusted spread<sc-if value="{{ tips.oas.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:0;top:calc(100% + 8px);z-index:20;width:320px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6)"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7">{{ tips.oas.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.oas.d }}</span><a href="Learn.dc.html#library" style="font:500 10.5px 'IBM Plex Mono',monospace;color:#3B82F6">Open concept →</a></span></sc-if></span> over Treasuries · ICE BofA US HY index</span>
+</div>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid #FFB84D;color:#FFB84D">◆ WATCH · SAMPLE</span>
+<span style="font:600 44px/1 'IBM Plex Mono',monospace;padding:0 4px;animation:flashUp 5s ease-out 2s infinite">––.––%</span>
+<span style="font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">±–– bp w/w · [DATE]</span>
+</div>
+<div style="grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36;margin-top:4px">
+<sc-for list="{{ stats }}" as="s" hint-placeholder-count="4"><div style="border-bottom:1px solid #202A36;padding:8px 10px;display:flex;flex-direction:column;gap:5px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">{{ s.k }}</span><span style="font:600 15px 'IBM Plex Mono',monospace">{{ s.v }}</span><sc-if value="{{ s.rail }}" hint-placeholder-val="{{ false }}"><div style="position:relative;height:4px;background:#111821;margin-top:2px"><div style="position:absolute;top:-4px;left:50%;width:2px;height:12px;background:#8693A6"></div></div><div style="display:flex;justify-content:space-between;font:400 9.5px 'IBM Plex Mono',monospace;color:#8693A6"><span>LOW ––.––</span><span>HIGH ––.––</span></div></sc-if></div></sc-for>
+</div>
+</div>
+
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 115ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:center;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">01</span><span>What happened</span>
+<div style="margin-left:auto;display:flex;gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ ranges }}" as="r" hint-placeholder-count="5"><button onClick="{{ r.pick }}" style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;padding:4px 10px;border:0;cursor:pointer;background:{{ r.bg }};color:{{ r.ink }}">{{ r.label }}</button></sc-for>
+</div></div>
+<div onMouseMove="{{ chartMove }}" onMouseLeave="{{ chartLeave }}" style="position:relative;height:300px;background:#060A0F;border:1px solid #202A36;cursor:crosshair">
+<svg viewBox="0 0 1000 300" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;animation:reveal 1.6s cubic-bezier(0.77,0,0.175,1) 200ms both"><sc-for list="{{ grid }}" as="g" hint-placeholder-count="5"><line x1="0" x2="1000" y1="{{ g.y }}" y2="{{ g.y }}" stroke="#111821" stroke-width="1" vector-effect="non-scaling-stroke"></line></sc-for><polygon points="{{ ind.area }}" fill="rgba(232,89,12,.10)"></polygon><polyline points="{{ ind.line }}" fill="none" stroke="#E8590C" stroke-width="2" vector-effect="non-scaling-stroke"></polyline></svg>
+<sc-for list="{{ yAxis }}" as="y" hint-placeholder-count="5"><span style="position:absolute;left:8px;top:{{ y.top }};transform:translateY(-50%);font:500 9.5px 'IBM Plex Mono',monospace;color:#5D6878">––.––</span></sc-for>
+<span style="position:absolute;left:12px;top:10px;font:500 10.5px 'IBM Plex Mono',monospace;color:#B8C4D3;background:#000;padding:1px 5px">HY OAS · {{ range }} · ILLUSTRATIVE SHAPE — NOT DATA · hover to read</span>
+<sc-if value="{{ hover.on }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;top:0;bottom:0;left:{{ hover.left }};border-left:1px solid #8693A6;pointer-events:none"></div><div style="position:absolute;left:{{ hover.left }};top:{{ hover.top }};width:9px;height:9px;margin:-4.5px 0 0 -4.5px;background:#E8590C;box-shadow:0 0 0 3px #000;pointer-events:none"></div><div style="position:absolute;top:34px;left:{{ hover.boxLeft }};transform:{{ hover.shift }};z-index:5;pointer-events:none;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:6px 9px;display:flex;flex-direction:column;gap:2px;min-width:150px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">[DATE]</span><span style="font:600 15px 'IBM Plex Mono',monospace;color:#EAF0F7">––.––%</span><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:{{ hover.zoneC }}">{{ hover.zone }}</span><sc-if value="{{ hover.hasEvent }}" hint-placeholder-val="{{ false }}"><span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#E8590C">{{ hover.event }}</span></sc-if></div></sc-if>
+<div style="position:absolute;left:0;right:0;top:38%;border-top:1px dashed #EF4444"><span style="position:absolute;right:8px;top:-18px;font:600 10px 'IBM Plex Mono',monospace;color:#EF4444">ALERT ≥ [THRESHOLD]</span></div>
+<div style="position:absolute;left:0;right:0;top:58%;border-top:1px dashed #FFB84D"><span style="position:absolute;right:8px;top:-18px;font:600 10px 'IBM Plex Mono',monospace;color:#FFB84D">WATCH ≥ [THRESHOLD]</span></div>
+<sc-for list="{{ indDots }}" as="e" hint-placeholder-count="3"><div style="position:absolute;left:{{ e.left }};top:{{ e.top }};width:0;height:0;pointer-events:none"><span style="position:absolute;left:-4px;top:-4px;width:8px;height:8px;background:#E8590C;box-shadow:0 0 0 3px #000"></span><span style="position:absolute;left:-40px;width:80px;text-align:center;top:-24px;font:600 10px 'IBM Plex Mono',monospace;color:#EAF0F7;white-space:nowrap">{{ e.label }}</span></div></sc-for>
+</div>
+</div>
+
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 170ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:0;align-items:stretch;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700;padding-right:10px;align-self:center">02</span>
+<sc-for list="{{ tabs }}" as="b" hint-placeholder-count="4"><button onClick="{{ b.pick }}" style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;margin:-6px 0;border:0;cursor:pointer;background:{{ b.bg }};color:{{ b.ink }};box-shadow:{{ b.bar }}">{{ b.label }}</button></sc-for>
+</div>
+<p style="margin:4px 0 0;max-width:820px;font:400 13px/1.6 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">{{ tabBody }}</p>
+<div style="display:flex;gap:14px;align-items:center;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6;border-top:1px solid #202A36;padding-top:8px"><span>Related</span><a href="#" style="color:#3B82F6">Credit cycle</a><a href="#" style="color:#3B82F6">Risk premium</a><a href="#" style="color:#3B82F6">Default rate</a><span style="margin-left:auto">Source: FRED · BAMLH0A0HYM2 · updated daily · last [DATE]</span></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:36px">
+<div style="padding:0;display:flex;flex-direction:column;gap:8px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 225ms both">
+<div style="margin:0 0 2px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">03</span><span>What may happen</span></div>
+<div style="font:600 12px/1.35 'IBM Plex Mono',monospace">Spread above [THRESHOLD] within 12 months</div>
+<sc-for list="{{ srcTips }}" as="s" hint-placeholder-count="4">
+<div style="display:grid;grid-template-columns:118px 1fr auto;gap:8px;align-items:center;padding:3px 0">
+<span tabIndex="0" onMouseEnter="{{ s.on }}" onMouseLeave="{{ s.off }}" onFocus="{{ s.on }}" onBlur="{{ s.off }}" style="position:relative;justify-self:start;font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;cursor:help;color:{{ s.c }};border:1px {{ s.line }} {{ s.c }}">{{ s.label }}<sc-if value="{{ s.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;right:calc(100% + 8px);top:-6px;z-index:20;width:260px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid {{ s.c }};padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#EAF0F7">{{ s.label }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ s.tip }}</span></span></sc-if></span>
+<span style="font:600 14px 'IBM Plex Mono',monospace">––%</span>
+<span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">hit ––% · n=––</span>
+</div>
+</sc-for>
+<button style="align-self:flex-start;margin-top:4px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid #202A36;background:#111821;color:#EAF0F7;cursor:pointer" style-active="transform:scale(0.97)">Add my estimate</button>
+</div>
+
+<div style="padding:0;display:flex;flex-direction:column;gap:0;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 280ms both">
+<div style="margin:0 0 2px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">04</span><span>Who reads this</span></div>
+<sc-for list="{{ readers }}" as="r" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:3px;padding:9px 0;border-bottom:1px solid #202A36">
+<span style="font:italic 700 19px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ r.who }}</span>
+<span style="font:400 11.5px/1.4 'IBM Plex Mono',monospace;color:#B8C4D3">{{ r.how }}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 14px;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 335ms both">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">05</span><span>Quote</span></div>
+<div style="font:italic 700 24px/1.02 'Barlow Condensed',sans-serif;text-transform:uppercase">[VERIFIED QUOTE ON CREDIT CYCLES]</div>
+<div style="font:400 11px 'IBM Plex Mono',monospace;color:#536071">— Howard Marks · [MEMO TITLE], [YEAR] · source required</div>
+</div>
+</div>
+</main>
+</div>
+</section>
+
+<section id="design-system" data-screen-label="03 Design system" style="padding:40px 44px 60px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">03</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Design system · Gunmetal Ember 14c</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;padding:28px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<div style="display:flex;align-items:flex-end;gap:24px;border-bottom:2px solid #E8590C;padding-bottom:16px">
+<h2 style="margin:0;font:italic 700 72px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">Gunmetal Ember</h2>
+<p style="margin:0 0 6px;max-width:520px;font:400 12.5px/1.55 'IBM Plex Mono',monospace;color:#B8C4D3">Terminal-dense, square, cold steel. Orange marks structure and action only; green, red and amber only ever mean data. Light cards are reserved for headlines: posture and quotes.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px">
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">DARK SURFACES + SEMANTIC</span>
+<div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px">
+<sc-for list="{{ darkSw }}" as="s" hint-placeholder-count="12"><div style="display:flex;flex-direction:column;gap:4px"><div style="height:36px;background:{{ s.hex }};border:1px solid #202A36"></div><span style="font:500 10px 'IBM Plex Mono',monospace;color:#B8C4D3">{{ s.name }}</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#8693A6;margin-top:-3px">{{ s.hex }}</span></div></sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">LIGHT HEADLINE CARD</span>
+<div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px">
+<sc-for list="{{ lightSw }}" as="s" hint-placeholder-count="12"><div style="display:flex;flex-direction:column;gap:4px"><div style="height:36px;background:{{ s.hex }};border:1px solid #202A36"></div><span style="font:500 10px 'IBM Plex Mono',monospace;color:#B8C4D3">{{ s.name }}</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#8693A6;margin-top:-3px">{{ s.hex }}</span></div></sc-for>
+</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:0 24px;border-top:1px solid #202A36">
+<div style="border-bottom:1px solid #202A36;padding:14px;display:flex;flex-direction:column;gap:6px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">DISPLAY · BARLOW CONDENSED 700 ITALIC</span><span style="font:italic 700 44px/.95 'Barlow Condensed',sans-serif;text-transform:uppercase">Is the trend with me?</span></div>
+<div style="border-bottom:1px solid #202A36;padding:14px;display:flex;flex-direction:column;gap:6px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">UI · IBM PLEX MONO 400 / 600</span><span style="font:400 13px/1.55 'IBM Plex Mono',monospace;color:#B8C4D3">Every number is explained simply, then linked to a concept and a council member.</span><span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em">PANEL HEADER · UPPERCASE · .08EM</span></div>
+<div style="border-bottom:1px solid #202A36;padding:14px;display:flex;flex-direction:column;gap:6px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">FIGURES · IBM PLEX MONO 600</span><span style="font:600 36px/1 'IBM Plex Mono',monospace">––.––%</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#8693A6">Placeholder until real data · [DATE] · [THRESHOLD]</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px">
+<div style="padding:0;display:flex;flex-direction:column;gap:12px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">01</span><span>Gauge · state tag</span></div>
+<sc-for list="{{ gaugeDemo }}" as="m" hint-placeholder-count="3"><div style="display:flex;align-items:center;gap:12px"><div style="display:flex;gap:2px"><sc-for list="{{ m.segs }}" as="g" hint-placeholder-count="5"><span style="width:16.4px;height:10px;background:{{ g.bg }}"></span></sc-for></div><span style="font:700 12px 'IBM Plex Mono',monospace;color:{{ m.c }};width:28px">{{ m.n }}/5</span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid {{ m.c }};color:{{ m.c }}">{{ m.tag }}</span></div></sc-for>
+<span style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:#8693A6">Rising risk is red even when the number goes up. Colour always paired with arrow + word.</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:10px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">02</span><span>Source tags</span></div>
+<sc-for list="{{ sources }}" as="s" hint-placeholder-count="4"><div style="display:flex;gap:10px;align-items:center"><span style="font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;color:{{ s.c }};border:1px {{ s.line }} {{ s.c }}">{{ s.label }}</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#8693A6">{{ s.def }}</span></div></sc-for>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:12px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">03</span><span>Buttons · concept tooltip</span></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">Primary</button>
+<button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border:1px solid #202A36;background:#111821;color:#EAF0F7;cursor:pointer" style-active="transform:scale(0.97)">Secondary</button>
+<button style="font:500 11px 'IBM Plex Mono',monospace;padding:9px 4px;border:0;background:transparent;color:#3B82F6;cursor:pointer;text-decoration:underline;text-underline-offset:3px">Link</button>
+</div>
+<div style="position:relative;padding-top:4px;font:400 12px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3">Spreads widen when <span style="color:#EAF0F7;border-bottom:1px dotted #E8590C">risk premium</span> rises.
+<div style="margin-top:8px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;max-width:300px"><div style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;margin-bottom:3px">RISK PREMIUM</div><div style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">Extra return investors demand for holding something riskier than a safe asset.</div><a href="#" style="font:500 10.5px 'IBM Plex Mono',monospace;color:#3B82F6">Open concept →</a></div>
+</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 32px">
+<sc-for list="{{ cellStates }}" as="d" hint-placeholder-count="4">
+<div style="padding:0;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6"><span>{{ d.label }}</span><span style="color:{{ d.c }}">● {{ d.state }}</span></div>
+<sc-if value="{{ d.loading }}" hint-placeholder-val="{{ false }}"><div style="height:28px;width:70%;background:linear-gradient(90deg,#111821 0%,#1C2633 50%,#111821 100%);background-size:200% 100%;animation:shimmer 1.4s linear infinite"></div></sc-if>
+<sc-if value="{{ d.hasValue }}" hint-placeholder-val="{{ true }}"><span style="font:600 26px/1.1 'IBM Plex Mono',monospace;color:{{ d.ink }}">{{ d.value }}</span></sc-if>
+<div style="position:relative;height:4px;background:#111821;margin-top:2px"><div style="position:absolute;top:-4px;left:50%;width:2px;height:12px;background:#8693A6"></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;font:400 10.5px 'IBM Plex Mono',monospace;color:#B8C4D3"><span>{{ d.note }}</span><sc-if value="{{ d.retry }}" hint-placeholder-val="{{ false }}"><button style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:3px 8px;border:1px solid #EF4444;background:transparent;color:#EF4444;cursor:pointer">RETRY</button></sc-if></div>
+</div>
+</sc-for>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px">
+<div style="padding:0;display:flex;flex-direction:column;gap:8px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">04</span><span>Explainer card</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ explainers }}" as="x" hint-placeholder-count="4"><div style="border-bottom:1px solid #202A36;padding:8px 10px;display:flex;flex-direction:column;gap:4px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#E8590C">{{ x.k }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ x.v }}</span></div></sc-for>
+</div>
+</div>
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 14px;display:flex;flex-direction:column;gap:10px">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">05</span><span>Quote block · light</span></div>
+<div style="font:italic 700 24px/1.02 'Barlow Condensed',sans-serif;text-transform:uppercase">Quote text only with verifiable source</div>
+<div style="font:400 11px 'IBM Plex Mono',monospace;color:#536071">— Name · Publication, year · link</div>
+<div style="display:flex;gap:6px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#D3DBE5;border-left:3px solid #0A7A42;color:#0A7A42">▼ CALM</span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#D3DBE5;border-left:3px solid #855600;color:#855600">◆ WATCH</span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#D3DBE5;border-left:3px solid #C01E2D;color:#C01E2D">▲ ALERT</span></div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ motionSpec }}" as="x" hint-placeholder-count="4"><div style="border-bottom:1px solid #202A36;padding:10px 12px;display:flex;flex-direction:column;gap:4px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7">{{ x.k }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#8693A6">{{ x.v }}</span></div></sc-for>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { range: '10Y', tab: 0 };
+  renderVals() {
+    const UP = '#22C55E', DN = '#EF4444', WA = '#FFB84D';
+    const lvl = n => n <= 2 ? UP : n === 3 ? WA : DN;
+    const tagOf = n => n <= 2 ? '▼ CALM' : n === 3 ? '◆ WATCH' : '▲ ALERT';
+    const segs = n => [1, 2, 3, 4, 5].map(i => ({ bg: i <= n ? lvl(n) : '#111821' }));
+    const nav = ['Council', 'Norway', 'Portfolio', 'Journal', 'Learn'].map((label, i) => ({ label,
+      ink: i === 0 ? '#EAF0F7' : '#8693A6', bar: i === 0 ? 'inset 0 0 0 200px #111821' : 'none' }));
+    const syms = ['OSEBX', 'I-44', 'EURNOK', 'USDNOK', 'NO 10Y', 'NOWA', 'BRENT', 'MSCI ACWI', 'S&P 500', 'US 10Y', 'HY OAS', 'VIX', 'GOLD', 'DXY'];
+    const ticker = [...syms, ...syms].map(sym => ({ sym }));
+    const steps = ['Defensive', 'Cautious', 'Neutral', 'Leaning in', 'Aggressive'].map((label, i) => ({ label, delay: 300 + i * 70 + 'ms',
+      bg: i === 1 ? '#E8590C' : i < 1 ? '#F6D6C2' : '#D3DBE5', ink: i === 1 ? '#0A0F16' : '#536071' }));
+    const LC = { a: '#C01E2D', w: '#855600', c: '#0A7A42' };
+    const reasons = [
+      { who: 'Marks', why: 'Credit and sentiment running hot — [READ]', tag: '▲ ALERT', c: LC.a },
+      { who: 'Taleb & Spitznagel', why: 'Portfolio has little convexity if equities fall — [READ]', tag: '▲ ALERT', c: LC.a },
+      { who: 'Tudor Jones', why: 'Trend still supportive — the dissent — [READ]', tag: '▼ CALM', c: LC.c },
+    ];
+    const changes = [
+      { what: 'HY OAS crossed watch line', note: '[THRESHOLD] · first time since [DATE]', tag: '◆ WATCH', c: WA },
+      { what: 'Norges Bank held at ––.––%', note: 'Path implies [N] cuts by [DATE]', tag: '— NEW', c: '#B8C4D3' },
+      { what: 'EURNOK above 200-day', note: 'Weaker krone raises imported inflation', tag: '▲ ALERT', c: DN },
+      { what: 'Brent fell ––.––% w/w', note: 'Fiscal room and NOK both sensitive', tag: '◆ WATCH', c: WA },
+      { what: 'S&P 500 trend intact', note: 'Price above 50 and 200-day averages', tag: '▼ CALM', c: UP },
+    ];
+    const sources = [
+      { label: 'Market-implied', c: '#3B82F6', line: 'solid', def: 'Derived from prices: futures, options, swaps' },
+      { label: 'Model', c: '#FF9A5C', line: 'solid', def: 'Our quantitative model, back-tested' },
+      { label: 'Base rate', c: '#B8C4D3', line: 'solid', def: 'How often it happened historically' },
+      { label: 'My estimate', c: '#EAF0F7', line: 'dashed', def: 'Your own call, logged in the Journal' },
+    ];
+    const events = [{ q: 'Norges Bank cuts at next meeting' }, { q: 'Global equities −20% within 12 months' }];
+    const raw = [
+      ['Dalio', 'Ray Dalio', 'What regime and debt cycle are we in?', 3],
+      ['Druck', 'Stanley Druckenmiller', 'Where is liquidity going, and does price confirm it?', 2],
+      ['Marks', 'Howard Marks', 'How hot are psychology and credit?', 4],
+      ['B&G', 'Buffett & Greenblatt', 'Are my holdings good businesses at good prices?', 3],
+      ['T&S', 'Taleb & Spitznagel', 'Where am I fragile, and what pays off if things break?', 4],
+      ['PTJ', 'Paul Tudor Jones', 'Is the trend with me?', 2],
+      ['B&B', 'Bernstein & Bogle', 'Will this meet my goals, and what deep risks exist?', 3],
+      ['Munger', 'Charlie Munger', 'Red team: what would make this decision stupid?', 3],
+    ];
+    const council = raw.map(([abbr, name, q, n], i) => ({ abbr, name, q, n, c: lvl(n), tag: tagOf(n), segs: segs(n),
+      delay: 280 + i * 55 + 'ms', gDelay: 520 + i * 55 + 'ms' }));
+    const ticks = [1, 2, 3, 4, 5].map(n => ({ n, left: (n - 1) * 25 + '%' }));
+    const seen = {};
+    const dots = council.map(m => { const k = seen[m.n] = (seen[m.n] || 0) + 1;
+      return { abbr: m.abbr, name: m.name, c: m.c, left: `calc(${(m.n - 1) * 25}% + ${(k - 2) * 46}px)`, top: '10px' }; });
+    const annos = [{ label: '2008 · GFC', left: '33%' }, { label: '2020 · COVID', left: '74%' }, { label: '2022 · RATE SHOCK', left: '86%' }];
+    const ranges = ['1Y', '5Y', '10Y', '25Y', 'MAX'].map(label => ({ label, pick: () => this.setState({ range: label }),
+      bg: this.state.range === label ? '#E8590C' : '#060A0F', ink: this.state.range === label ? '#FFFFFF' : '#B8C4D3' }));
+    const body = [
+      'The extra yield investors demand to lend to riskier, lower-rated companies instead of the US government. It is the price of credit risk, quoted in percentage points.',
+      'Credit markets often crack before stocks. A widening spread means lenders are nervous about defaults, so companies find it harder and dearer to refinance — which can slow the whole economy.',
+      'Compare today with the watch and alert lines on the chart and with past stress (2008, 2020, 2022). Direction matters as much as level: a fast widening from tight levels is a warning even below the alert line.',
+      'Marks reads it as a gauge of credit psychology. Taleb & Spitznagel watch it as an early sign that fragility is being priced. Current board view: [CURRENT READ].',
+    ];
+    const tabs = ['What is this', 'Why it matters', 'How to read it now', 'What the board says'].map((label, i) => ({ label, pick: () => this.setState({ tab: i }),
+      bg: this.state.tab === i ? '#060A0F' : 'transparent', ink: this.state.tab === i ? '#EAF0F7' : '#8693A6', bar: this.state.tab === i ? 'inset 0 2px 0 #E8590C' : 'none' }));
+    const stats = [
+      { k: 'CURRENT', v: '––.––%', rail: true }, { k: '1Y CHANGE', v: '±–– bp', rail: false },
+      { k: 'PERCENTILE SINCE 1997', v: '––th', rail: false }, { k: '52-WEEK RANGE', v: '––.–– → ––.––', rail: true },
+    ];
+    const readers = [
+      { who: 'Howard Marks', how: 'Credit psychology: are lenders being paid for risk, or reaching for yield?' },
+      { who: 'Taleb & Spitznagel', how: 'Fragility signal: widening spreads raise the value of tail protection.' },
+      { who: 'Stanley Druckenmiller', how: 'Liquidity check: tightening credit often precedes weaker equity prices.' },
+    ];
+    const darkSw = [['Ground', '#000000'], ['Panel', '#060A0F'], ['Raised', '#111821'], ['Border', '#202A36'], ['Ink', '#EAF0F7'], ['Ink 2', '#B8C4D3'],
+      ['Muted', '#8693A6'], ['Ember', '#E8590C'], ['Up', UP], ['Down', DN], ['Watch', WA], ['Link', '#3B82F6']].map(([name, hex]) => ({ name, hex }));
+    const lightSw = [['Card', '#E8ECF1'], ['Strip', '#DAE0E8'], ['Raised', '#D3DBE5'], ['Border', '#C5CEDA'], ['Ink', '#0A0F16'], ['Muted', '#536071'],
+      ['Index', '#A93D08'], ['Up', '#0A7A42'], ['Down', '#C01E2D'], ['Watch', '#855600'], ['Link', '#1C5BA8'], ['Ink 2', '#2E3947']].map(([name, hex]) => ({ name, hex }));
+    const gaugeDemo = [2, 3, 4].map(n => ({ n, c: lvl(n), tag: tagOf(n), segs: segs(n) }));
+    const cellStates = [
+      { label: 'I-44', state: 'LIVE', c: UP, hasValue: true, value: '––.––', ink: '#EAF0F7', note: 'Norges Bank · [TIME]', loading: false, retry: false },
+      { label: 'NOWA', state: 'LOADING', c: '#8693A6', hasValue: false, value: '', ink: '#EAF0F7', note: 'Fetching…', loading: true, retry: false },
+      { label: 'CPI-ATE', state: 'STALE 3D', c: WA, hasValue: true, value: '––.––', ink: '#8693A6', note: 'As of [DATE]', loading: false, retry: false },
+      { label: 'MAINLAND GDP', state: 'ERROR', c: DN, hasValue: true, value: '—', ink: '#8693A6', note: 'SSB unavailable', loading: false, retry: true },
+    ];
+    const explainers = [
+      { k: 'WHAT IS THIS', v: 'One plain sentence, no jargon.' }, { k: 'WHY IT MATTERS', v: 'Link to the economy and to your portfolio.' },
+      { k: 'HOW TO READ NOW', v: 'Level, direction, thresholds, history.' }, { k: 'WHAT THE BOARD SAYS', v: 'Which members use it and their read.' },
+    ];
+    const motionSpec = [
+      { k: 'ENTRY', v: 'Panels rise 10px · 480ms · cubic-bezier(.23,1,.32,1) · 55ms stagger · first load only' },
+      { k: 'GAUGES + STEPS', v: 'Reveal left→right after their panel lands' },
+      { k: 'TICKER', v: '70s marquee · pauses on hover · values flash green/red 400ms on change' },
+      { k: 'REDUCED MOTION', v: 'Everything settles to final state, no flashes' },
+    ];
+    const series = (seed, n, bumps) => { let s = seed; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+      let v = 0; const raw = []; for (let i = 0; i < n; i++) { v = v * 0.96 + (r() - 0.5) * 0.35; let y = v; bumps.forEach(([at, amp, w]) => { const d = (i / (n - 1) - at) / w; y += amp * Math.exp(-d * d); }); raw.push(y); }
+      const lo = Math.min(...raw), hi = Math.max(...raw); return raw.map(y => 0.1 + 0.8 * (y - lo) / (hi - lo || 1)); };
+    const toPts = (vals, W, H) => vals.map((v, i) => `${(i / (vals.length - 1) * W).toFixed(1)},${((1 - v) * H).toFixed(1)}`).join(' ');
+    const R = { '1Y': [11, 120, [[0.6, 1.2, 0.08]]], '5Y': [23, 160, [[0.15, 3, 0.05], [0.55, 1.6, 0.06]]], '10Y': [37, 200, [[0.4, 3.2, 0.03], [0.75, 1.8, 0.04]]],
+      '25Y': [51, 240, [[0.18, 2.2, 0.04], [0.47, 4.5, 0.03], [0.9, 2.6, 0.015], [0.97, 1.8, 0.02]]], 'MAX': [51, 260, [[0.13, 2.4, 0.04], [0.45, 4.6, 0.03], [0.88, 2.6, 0.015], [0.96, 1.8, 0.02]]] };
+    const [sd, n, bumps] = R[this.state.range];
+    const iv = series(sd, n, bumps);
+    const indDots = [['2008', 0.33], ['2020', 0.74], ['2022', 0.86]].map(([label, at]) => { const n = iv.length - 1; let j = Math.round(at * n); const i0 = j; for (let k = Math.max(0, i0 - 8); k <= Math.min(n, i0 + 8); k++) if (iv[k] > iv[j]) j = k; return { label, left: (j / n * 100) + '%', top: ((1 - iv[j]) * 100) + '%' }; });
+    const ind = { line: toPts(iv, 1000, 300), area: `0,300 ${toPts(iv, 1000, 300)} 1000,300` };
+    const grid = [0.2, 0.4, 0.6, 0.8].map(f => ({ y: f * 300 })), yAxis = [0.2, 0.4, 0.6, 0.8].map(f => ({ top: f * 100 + '%' }));
+    const hx = this.state.hx;
+    let hover = { on: false };
+    if (hx != null) { const i = Math.round(hx * (iv.length - 1)), v = iv[i], top = (1 - v) * 100;
+      const ev = annos.find(a => Math.abs(parseFloat(a.left) / 100 - hx) < 0.025);
+      hover = { on: true, left: hx * 100 + '%', top: top + '%', boxLeft: hx * 100 + '%', shift: hx > 0.7 ? 'translateX(calc(-100% - 12px))' : 'translateX(12px)',
+        zone: top < 38 ? '▲ above alert line' : top < 58 ? '◆ in watch zone' : '▼ below watch line', zoneC: top < 38 ? DN : top < 58 ? WA : UP, hasEvent: !!ev, event: ev ? ev.label : '' }; }
+    const chartMove = e => { const r = e.currentTarget.getBoundingClientRect(); this.setState({ hx: Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) }); };
+    const chartLeave = () => this.setState({ hx: null });
+    const hv = series(77, 220, [[0.33, -3.5, 0.03], [0.74, -2.4, 0.012], [0.86, -1.6, 0.03], [0.6, 1.5, 0.3], [1, 2.5, 0.25]]);
+    const H = 170, top = v => 22 + (1 - v) * (H - 30);
+    const homeLine = hv.map((v, i) => `${(i / (hv.length - 1) * 1000).toFixed(1)},${top(v).toFixed(1)}`).join(' ');
+    const homeArea = `0,${H} ${homeLine} 1000,${H}`;
+    const hGrid = [0.33, 0.66].map(f => ({ y: f * H }));
+    const evDots = [['2008', 0.33], ['2020', 0.74], ['2022', 0.86]].map(([label, at]) => { let i = Math.round(at * (hv.length - 1)); let j = i; for (let k = i - 6; k <= i + 6; k++) if (hv[k] < hv[j]) j = k; const y = top(hv[j]);
+      return { label, left: (j / (hv.length - 1) * 100) + '%', top: (y / H * 100) + '%', stem: Math.max(0, H - y - 26) + 'px', labelTop: Math.max(10, H - y - 14) + 'px' }; });
+    const years = [2000, 2004, 2008, 2012, 2016, 2020, 2024].map(y => ({ t: y, left: ((y - 2000) / 26 * 100) + '%' }));
+    const quad = [['GROWTH ↑\nINFLATION ↓', 'flex-start', 'gi'], ['GROWTH ↑\nINFLATION ↑', 'flex-start', 'gI'], ['GROWTH ↓\nINFLATION ↓', 'flex-end', 'Gi'], ['GROWTH ↓\nINFLATION ↑', 'flex-end', 'GI']].map(([k, just, c]) => ({ k, just, bg: c === 'gi' ? '#111821' : '#060A0F', ink: c === 'gi' ? '#B8C4D3' : '#5D6878' }));
+    const trail = '40,120 62,96 96,104 110,70 72,48', here = { x: '72px', y: '48px' };
+    const RC = { gi: ['#1F4D33', '#22C55E'], gI: ['#5A4317', '#FFB84D'], Gi: ['#1E3A5F', '#3B82F6'], GI: ['#5C1F22', '#EF4444'] };
+    const LBL = { gi: 'G↑ I↓', gI: 'G↑ I↑', Gi: 'G↓ I↓', GI: 'G↓ I↑' }, SH = { gi: '#111821', gI: '#1A222D', Gi: '#0B1118', GI: '#232D3A' };
+    const bandRaw = [['gi', 18], ['gI', 12], ['Gi', 5], ['gi', 22], ['Gi', 6], ['gi', 20], ['gI', 4], ['GI', 6], ['gi', 7]];
+    const regimeBand = bandRaw.map(([k, w], i) => { const last = i === bandRaw.length - 1; return { w: w + '%', label: w >= 5 ? LBL[k] : '', bg: last ? '#3A1A08' : SH[k], ink: last ? '#FF9A5C' : '#8693A6', ring: last ? 'inset 0 0 0 1px #E8590C' : 'none' }; });
+    const regimeLegend = [['Growth ↑ inflation ↓', 'gi'], ['Growth ↑ inflation ↑', 'gI'], ['Growth ↓ inflation ↑', 'GI'], ['Growth ↓ inflation ↓', 'Gi']].map(([k, c]) => ({ k, c: RC[c][1] }));
+    const tip = (k, t, d) => ({ t, d, open: this.state.tip === k, on: () => this.setState({ tip: k }), off: () => this.setState({ tip: null }) });
+    const tips = {
+      gauge: tip('gauge', 'Council gauge', 'Each member scores 1 (conditions support taking risk) to 5 (conditions argue for caution). Colour follows the score: green 1–2, amber 3, red 4–5.'),
+      dis: tip('dis', 'Why not average?', 'An average of 2 and 4 looks like a calm 3. Showing every member keeps the dissent visible — often the most useful signal on the board.'),
+      oas: tip('oas', 'Option-adjusted spread (OAS)', 'The extra yield over a Treasury of similar maturity, adjusted for bonds the issuer can repay early. Quoted in percentage points; 1 bp = 0.01 percentage point.'),
+    };
+    const srcTips = sources.map((s, i) => ({ ...s, ...tip('src' + i, s.label, ''), tip: [
+      'Probability backed out of market prices — futures, options or swaps. What traders are paying for, not a forecast by us.',
+      'Output of our quantitative model, back-tested. Hit rate shows how often its past calls at this confidence came true.',
+      'How often this has happened historically in similar conditions. n = number of past episodes counted.',
+      'Your own estimate, logged in the Journal so it can be scored later.'][i] }));
+    return { indDots, homeArea, hGrid, evDots, years, quad, trail, here, ind, grid, yAxis, hover, chartMove, chartLeave, homeLine, regimeBand, regimeLegend, tips, srcTips, nav, ticker, steps, reasons, changes, sources, events, council, ticks, dots, annos, ranges, range: this.state.range,
+      tabs, tabBody: body[this.state.tab], stats, readers, darkSw, lightSw, gaugeDemo, cellStates, explainers, motionSpec };
+  }
+}
+</script>
+</body>
+</html>

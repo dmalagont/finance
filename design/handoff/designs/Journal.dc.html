@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#15181D;font-family:'IBM Plex Mono',monospace}a{color:#3B82F6}a:hover{color:#7AA9F8}button,textarea,input{font-family:inherit}textarea::placeholder,input::placeholder{color:#5D6878}textarea:focus,input:focus{outline:1px solid #E8590C;outline-offset:-1px}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+</helmet>
+<section id="journal" data-screen-label="Journal + red team" style="padding:40px 44px 60px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">05</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Journal + Munger red team · clickable prototype · 1440</span></div>
+<div style="width:1440px;min-height:900px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5);display:flex;flex-direction:column">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><nav style="display:flex"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="6"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}">{{ n.label }}</a></sc-for></nav><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">[DATE]</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="flex:1;display:grid;grid-template-columns:280px minmax(0,1fr)">
+<aside style="border-right:1px solid #202A36;background:#060A0F;display:flex;flex-direction:column">
+<div style="padding:12px;border-bottom:1px solid #202A36"><button onClick="{{ restart }}" style="width:100%;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">+ NEW DECISION</button></div>
+<div style="padding:10px 12px 6px;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">DECISION LOG</div>
+<sc-for list="{{ entries }}" as="e" hint-placeholder-count="3"><div style="padding:10px 12px;border-bottom:1px solid #202A36;display:flex;flex-direction:column;gap:4px;background:{{ e.bg }}"><span style="font:600 12px 'IBM Plex Mono',monospace;color:{{ e.ink }}">{{ e.title }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">{{ e.meta }}</span><span style="align-self:flex-start;font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;padding:1px 6px 1px 5px;background:#111821;border-left:3px solid {{ e.c }};color:{{ e.c }}">{{ e.tag }}</span></div></sc-for>
+<div style="margin-top:auto;padding:12px;font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:#8693A6;border-top:1px solid #202A36">Every decision gets a review date. On that day it returns here with what actually happened.</div>
+</aside>
+<main style="padding:18px 24px 24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;gap:2px">
+<sc-for list="{{ stepper }}" as="s" hint-placeholder-count="3"><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="height:6px;background:{{ s.bar }};transform:skewX(-14deg)"></div><span style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ s.ink }}">{{ s.n }} · {{ s.label }}</span></div></sc-for>
+</div>
+
+<sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px;align-items:start;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) both">
+<div style="padding:0;display:flex;flex-direction:column;gap:14px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">01</span><span>The decision</span><span style="margin-left:auto;color:#8693A6;font-weight:500">* REQUIRED</span></div>
+<sc-for list="{{ fields }}" as="f" hint-placeholder-count="6">
+<label style="display:flex;flex-direction:column;gap:5px">
+<span style="display:flex;gap:8px;align-items:baseline"><span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase">{{ f.label }}{{ f.star }}</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#8693A6">{{ f.help }}</span></span>
+<textarea rows="{{ f.rows }}" value="{{ f.value }}" onChange="{{ f.set }}" placeholder="{{ f.ph }}" style="resize:vertical;background:#000;border:1px solid #202A36;color:#EAF0F7;font:400 12.5px/1.5 'IBM Plex Mono',monospace;padding:8px 10px"></textarea>
+</label>
+</sc-for>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em">WHAT'S PRICED IN — SOURCE</span>
+<div style="display:flex;gap:6px"><sc-for list="{{ srcChips }}" as="s" hint-placeholder-count="4"><button onClick="{{ s.pick }}" style="font:500 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;cursor:pointer;color:{{ s.ink }};background:{{ s.bg }};border:1px {{ s.line }} {{ s.c }}">{{ s.label }}</button></sc-for></div>
+</div>
+<div style="display:flex;gap:10px;align-items:center;border-top:1px solid #202A36;padding-top:12px">
+<button onClick="{{ toRed }}" disabled="{{ formBlocked }}" style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:0;cursor:pointer;background:{{ formBtnBg }};color:{{ formBtnInk }}" style-active="transform:scale(0.97)">CONTINUE TO RED TEAM →</button>
+<span style="font:400 11px 'IBM Plex Mono',monospace;color:#8693A6">{{ formHint }}</span>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:36px">
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 12px;display:flex;flex-direction:column;gap:8px">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">02</span><span>Attached snapshot</span></div>
+<span style="font:italic 700 34px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">Cautious</span>
+<span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#2E3947">Posture, council states and key prices are frozen with the entry, so you can later compare what you knew with what happened.</span>
+<span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#536071">SAMPLE · [DATE] 07:00 CET</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:6px">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#E8590C">WHY WRITE IT DOWN</span>
+<span style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3">Memory rewrites itself after the outcome. A written view, an exit condition and a pre-mortem are the only honest record of how you decided.</span>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isRed }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px;align-items:start;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) both">
+<div style="padding:0;display:flex;flex-direction:column;gap:2px">
+<div style="margin:0 0 8px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">03</span><span>Munger red team</span><span style="margin-left:auto;color:{{ redColor }};font-weight:700">{{ doneCount }}/8 CHECKED</span></div>
+<div style="display:flex;align-items:baseline;gap:14px;padding-bottom:10px"><span style="font:italic 700 34px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">What would make this stupid?</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#8693A6">Answer each honestly. All eight before you can save.</span></div>
+<sc-for list="{{ checks }}" as="c" hint-placeholder-count="8">
+<div style="display:grid;grid-template-columns:28px 200px minmax(0,1fr);gap:12px;align-items:start;padding:10px 0;border-top:1px solid #202A36">
+<button onClick="{{ c.toggle }}" aria-label="{{ c.k }}" style="width:22px;height:22px;padding:0;cursor:pointer;border:1px solid {{ c.bd }};background:{{ c.bg }};color:#FFFFFF;font:700 13px/1 'IBM Plex Mono',monospace">{{ c.mark }}</button>
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 12px 'IBM Plex Mono',monospace;color:{{ c.ink }}">{{ c.k }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">{{ c.def }}</span></div>
+<span style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3">{{ c.q }}</span>
+</div>
+</sc-for>
+<div style="display:flex;gap:10px;align-items:center;border-top:1px solid #202A36;padding-top:12px;margin-top:4px">
+<button onClick="{{ toForm }}" style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:1px solid #202A36;background:#111821;color:#EAF0F7;cursor:pointer" style-active="transform:scale(0.97)">← BACK</button>
+<label style="display:flex;gap:8px;align-items:center;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em">REVIEW ON <input type="date" value="{{ review }}" onChange="{{ setReview }}" style="background:#000;border:1px solid #202A36;color:#EAF0F7;font:500 12px 'IBM Plex Mono',monospace;padding:7px 8px;color-scheme:dark"></label>
+<button onClick="{{ save }}" disabled="{{ saveBlocked }}" style="margin-left:auto;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:0;cursor:pointer;background:{{ saveBg }};color:{{ saveInk }}" style-active="transform:scale(0.97)">SAVE DECISION</button>
+</div>
+<span style="align-self:flex-end;font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6;margin-top:6px">{{ saveHint }}</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:8px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">04</span><span>You are deciding</span></div>
+<span style="font:600 13px/1.4 'IBM Plex Mono',monospace">{{ titleShown }}</span>
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6;margin-top:4px">INVALIDATION</span>
+<span style="font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3">{{ invShown }}</span>
+<span style="font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:#8693A6;border-top:1px solid #202A36;padding-top:8px">Inversion: imagine it is the review date and this went badly. The checklist is a structured way of asking why.</span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSaved }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px;align-items:start;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) both">
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 16px;display:flex;flex-direction:column;gap:14px">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">05</span><span>Saved entry</span><span style="margin-left:auto;font-weight:600;padding:1px 7px 1px 6px;background:#D3DBE5;border-left:3px solid #0A7A42;color:#0A7A42">✓ RED-TEAMED 8/8</span></div>
+<span style="font:italic 700 46px/.92 'Barlow Condensed',sans-serif;text-transform:uppercase;text-wrap:pretty">{{ titleShown }}</span>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px">
+<sc-for list="{{ summary }}" as="s" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid #C5CEDA;padding-top:8px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#536071">{{ s.k }}</span><span style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:#2E3947;white-space:pre-wrap">{{ s.v }}</span></div></sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:36px">
+<div style="background:#060A0F;border:1px solid #202A36;border-top:2px solid #E8590C;padding:12px;display:flex;flex-direction:column;gap:6px">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">REVIEW DATE</span>
+<span style="font:600 26px 'IBM Plex Mono',monospace">{{ reviewShown }}</span>
+<span style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3">You'll be asked: was the view right, was it right for the right reasons, and did the invalidation trigger?</span>
+</div>
+<div style="display:flex;gap:8px"><button onClick="{{ restart }}" style="flex:1;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">NEW DECISION</button><button onClick="{{ toForm }}" style="flex:1;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px;border:1px solid #202A36;background:#111821;color:#EAF0F7;cursor:pointer" style-active="transform:scale(0.97)">EDIT</button></div>
+</div>
+</div>
+</sc-if>
+</main>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 'form', f: {}, src: 'Market-implied', checks: Array(8).fill(false), review: '', saved: [] };
+  renderVals() {
+    const s = this.state, f = s.f;
+    const nav = ['Council', 'Panels', 'Norway', 'Portfolio', 'Journal', 'Learn'].map((label, i) => ({ label, ink: i === 4 ? '#EAF0F7' : '#8693A6', bar: i === 4 ? 'inset 0 0 0 200px #111821' : 'none' }));
+    const set = k => e => { const v = e.target.value; this.setState(st => ({ f: { ...st.f, [k]: v } })); };
+    const defs = [
+      ['title', 'Decision', true, 'One line: what you will do', 'e.g. Reduce global equities from [N]% to [N]%', 1],
+      ['consensus', 'Consensus view', false, 'What most investors believe now', 'What is the crowd assuming?', 2],
+      ['mine', 'My view', true, 'Where and why you differ', 'I think … because …', 3],
+      ['priced', "What's priced in", false, 'What the market already expects', 'Futures imply … · spreads at …', 2],
+      ['invalid', 'Invalidation', true, 'What would prove you wrong — be specific', 'I am wrong if … by [DATE]', 2],
+      ['premortem', 'Pre-mortem', false, 'It is a year later and this failed. Why?', 'Most likely reason it failed …', 3],
+    ];
+    const fields = defs.map(([k, label, req, help, ph, rows]) => ({ label, star: req ? ' *' : '', help, ph, rows, value: f[k] || '', set: set(k) }));
+    const formOk = ['title', 'mine', 'invalid'].every(k => (f[k] || '').trim());
+    const srcDefs = [['Market-implied', '#3B82F6', 'solid'], ['Model', '#FF9A5C', 'solid'], ['Base rate', '#B8C4D3', 'solid'], ['My estimate', '#EAF0F7', 'dashed']];
+    const srcChips = srcDefs.map(([label, c, line]) => ({ label, c, line, pick: () => this.setState({ src: label }),
+      bg: s.src === label ? c : 'transparent', ink: s.src === label ? '#000000' : c }));
+    const C = [
+      ['Confirmation bias', 'Seeking what agrees', 'What is the strongest evidence against this view, and have I read it?'],
+      ['Incentives', 'Who benefits', 'Who gains if I act — a fund, a pundit, my own ego? Would I decide the same without them?'],
+      ['Social proof', 'Following the crowd', 'Would I still do this if nobody I respect was doing it?'],
+      ['Overconfidence', 'Too sure, too narrow', 'What is my honest probability, and what was my hit rate on similar calls?'],
+      ['Availability', 'Recent and vivid', 'Am I reacting to the last headline, or to the base rate?'],
+      ['Anchoring', 'Stuck on a number', 'Which price or forecast am I anchored to, and why should it matter?'],
+      ['Loss aversion & sunk cost', 'Defending past choices', 'If I held nothing today, would I buy this position at this size?'],
+      ['Inversion', 'Think backwards', 'How would I guarantee this fails? Am I doing any of that?'],
+    ];
+    const checks = C.map(([k, def, q], i) => { const on = s.checks[i]; return { k, def, q, mark: on ? '✓' : '',
+      bg: on ? '#E8590C' : '#000', bd: on ? '#E8590C' : '#3A4757', ink: on ? '#EAF0F7' : '#B8C4D3',
+      toggle: () => this.setState(st => ({ checks: st.checks.map((v, j) => j === i ? !v : v) })) }; });
+    const doneCount = s.checks.filter(Boolean).length;
+    const canSave = doneCount === 8 && !!s.review;
+    const fmt = d => d ? new Date(d + 'T00:00').toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase() : '[DATE]';
+    const save = () => { if (!canSave) return; this.setState(st => ({ step: 'saved', saved: [{ title: st.f.title, review: st.review }, ...st.saved] })); };
+    const restart = () => this.setState({ step: 'form', f: {}, checks: Array(8).fill(false), review: '' });
+    const steps = ['Decision', 'Red team', 'Saved'], si = { form: 0, red: 1, saved: 2 }[s.step];
+    const stepper = steps.map((label, i) => ({ n: '0' + (i + 1), label: label.toUpperCase(), bar: i <= si ? '#E8590C' : '#111821', ink: i === si ? '#EAF0F7' : '#8693A6' }));
+    const entries = [
+      ...s.saved.map((e, i) => ({ title: e.title, meta: 'Review ' + fmt(e.review), tag: '◆ OPEN', c: '#FFB84D', bg: i === 0 && s.step === 'saved' ? '#111821' : 'transparent', ink: '#EAF0F7' })),
+      { title: '[PAST ENTRY]', meta: 'Logged [DATE] · reviewed', tag: '▼ RIGHT', c: '#22C55E', bg: 'transparent', ink: '#B8C4D3' },
+      { title: '[PAST ENTRY]', meta: 'Logged [DATE] · reviewed', tag: '▲ WRONG', c: '#EF4444', bg: 'transparent', ink: '#B8C4D3' },
+      { title: '[PAST ENTRY]', meta: 'Review due [DATE]', tag: '◆ OPEN', c: '#FFB84D', bg: 'transparent', ink: '#B8C4D3' },
+    ];
+    const summary = [
+      ['MY VIEW', f.mine], ['CONSENSUS', f.consensus], ["PRICED IN · " + s.src.toUpperCase(), f.priced], ['INVALIDATION', f.invalid], ['PRE-MORTEM', f.premortem],
+    ].map(([k, v]) => ({ k, v: (v || '').trim() || '—' }));
+    return {
+      nav, fields, srcChips, checks, doneCount, stepper, entries, summary, restart, save,
+      isForm: s.step === 'form', isRed: s.step === 'red', isSaved: s.step === 'saved',
+      toRed: () => formOk && this.setState({ step: 'red' }), toForm: () => this.setState({ step: 'form' }),
+      formBlocked: !formOk, formBtnBg: formOk ? '#E8590C' : '#111821', formBtnInk: formOk ? '#FFFFFF' : '#5D6878',
+      formHint: formOk ? 'Snapshot attaches automatically.' : 'Fill Decision, My view and Invalidation to continue.',
+      redColor: doneCount === 8 ? '#22C55E' : '#FFB84D',
+      review: s.review, setReview: e => this.setState({ review: e.target.value }),
+      saveBlocked: !canSave, saveBg: canSave ? '#E8590C' : '#111821', saveInk: canSave ? '#FFFFFF' : '#5D6878',
+      saveHint: canSave ? 'Ready to save.' : doneCount < 8 ? `${8 - doneCount} check${8 - doneCount === 1 ? '' : 's'} left` + (s.review ? '' : ' · set a review date') : 'Set a review date to save.',
+      titleShown: (f.title || '').trim() || '[DECISION]', invShown: (f.invalid || '').trim() || '—', reviewShown: fmt(s.review),
+    };
+  }
+}
+</script>
+</body>
+</html>

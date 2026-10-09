@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#15181D;font-family:'IBM Plex Mono',monospace}a{color:#3B82F6}a:hover{color:#7AA9F8}button{font-family:inherit}@keyframes shimmer{to{background-position:-200% 0}}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+</helmet>
+<section id="states" data-screen-label="States and first run" style="padding:40px 44px 60px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">08</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">States and first run · 960 each</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+<div data-screen-label="S1 Empty / first run" style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em">S1 · EMPTY APP, BEFORE DATA</span>
+<div style="width:960px;height:600px;background:#000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5);display:flex;flex-direction:column">
+<header style="display:flex;align-items:center;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">SETUP 0 / 3</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="flex:1;padding:40px 48px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:40px">
+<div style="display:flex;flex-direction:column;gap:14px"><span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#E8590C">WELCOME</span><span style="font:italic 700 64px/.86 'Barlow Condensed',sans-serif;text-transform:uppercase">The council has nothing to read yet</span><span style="font:400 12.5px/1.6 'IBM Plex Mono',monospace;color:#B8C4D3">Connect data, add your portfolio and set a goal. Every gauge stays empty until real data arrives — nothing is estimated in the meantime.</span><span style="font:500 10.5px 'IBM Plex Mono',monospace;color:#8693A6">Monitoring tool, not investment advice.</span></div>
+<div style="display:flex;flex-direction:column;gap:0 24px;border-top:1px solid #202A36;align-self:start">
+<sc-for list="{{ setup }}" as="s" hint-placeholder-count="3"><div style="border-bottom:1px solid #202A36;padding:16px;display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:14px;align-items:center"><span style="font:700 20px 'IBM Plex Mono',monospace;color:#E8590C">{{ s.n }}</span><div style="display:flex;flex-direction:column;gap:3px"><span style="font:600 13px 'IBM Plex Mono',monospace">{{ s.k }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#8693A6">{{ s.v }}</span></div><button style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 12px;cursor:pointer;border:{{ s.bd }};background:{{ s.bg }};color:{{ s.ink }}" style-active="transform:scale(0.97)">{{ s.cta }}</button></div></sc-for>
+</div>
+</div>
+</div></div>
+
+<div data-screen-label="S2 CSV import" style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em">S2 · PORTFOLIO CSV IMPORT</span>
+<div style="width:960px;height:600px;background:#000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5);display:flex;flex-direction:column">
+<header style="display:flex;align-items:center;gap:16px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Import portfolio</span><span style="margin-left:auto;font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">01 FILE · <span style="color:#EAF0F7">02 MAP COLUMNS</span> · 03 CONFIRM</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="flex:1;padding:16px 20px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:12px;min-height:0">
+<div style="display:flex;flex-direction:column;gap:36px">
+<div style="border:1px dashed #3A4757;background:#060A0F;padding:18px;display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font:600 12px 'IBM Plex Mono',monospace">holdings_[DATE].csv</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">–– rows · –– columns</span><button style="margin-top:6px;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:6px 10px;border:1px solid #202A36;background:#111821;color:#EAF0F7;cursor:pointer">REPLACE FILE</button></div>
+<div style="padding:0;display:flex;flex-direction:column;gap:6px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">ACCEPTED FROM</span><span style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3">Nordnet · DNB · Sbanken · generic CSV. Account type (ASK, IPS, regular) is kept for tax notes.</span></div>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:0;min-height:0">
+<div style="margin:0 0 6px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em"><span style="color:#E8590C;font-weight:700">02</span><span>MAP COLUMNS</span><span style="margin-left:auto;color:#FFB84D">◆ 1 NEEDS ATTENTION</span></div>
+<sc-for list="{{ mapping }}" as="m" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:160px 20px 180px minmax(0,1fr);gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #111821"><span style="font:500 11.5px 'IBM Plex Mono',monospace;color:#B8C4D3">{{ m.col }}</span><span style="color:#8693A6">→</span><span style="font:600 11px 'IBM Plex Mono',monospace;padding:4px 8px;background:#111821;border:1px solid {{ m.bd }}">{{ m.field }} ▾</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:{{ m.c }}">{{ m.note }}</span></div></sc-for>
+<span style="margin-top:12px;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">PREVIEW · FIRST 3 ROWS</span>
+<sc-for list="{{ preview }}" as="p" hint-placeholder-count="3"><div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;padding:6px 0;border-bottom:1px solid #111821;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6"><span>[ISIN]</span><span>[NAME]</span><span>––</span><span>––.–– NOK</span><span>[ACCOUNT]</span></div></sc-for>
+<div style="margin-top:auto;display:flex;gap:8px;justify-content:flex-end;padding-top:10px"><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid #202A36;background:#111821;color:#EAF0F7;cursor:pointer">BACK</button><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">CONFIRM IMPORT</button></div>
+</div>
+</div>
+</div></div>
+
+<div data-screen-label="S3 Loading" style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em">S3 · LOADING</span>
+<div style="width:960px;height:600px;background:#000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5);display:flex;flex-direction:column">
+<header style="display:flex;align-items:center;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">FETCHING –– / –– SOURCES</span></header>
+<div style="height:2px;background:linear-gradient(90deg,#E8590C 0%,#3A1A08 50%,#E8590C 100%);background-size:200% 100%;animation:shimmer 1.4s linear infinite"></div>
+<div style="flex:1;padding:16px 20px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:auto 1fr;gap:12px">
+<div style="background:#E8ECF1;border:1px solid #C5CEDA;padding:10px 12px;display:flex;flex-direction:column;gap:12px"><div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#0A0F16"><span style="color:#A93D08">01</span> POSTURE</div><div style="height:56px;width:70%;background:linear-gradient(90deg,#D3DBE5 0%,#E8ECF1 50%,#D3DBE5 100%);background-size:200% 100%;animation:shimmer 1.4s linear infinite"></div><div style="height:12px;background:linear-gradient(90deg,#D3DBE5 0%,#E8ECF1 50%,#D3DBE5 100%);background-size:200% 100%;animation:shimmer 1.4s linear infinite"></div></div>
+<div style="padding:0;display:flex;flex-direction:column;gap:10px"><div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em"><span style="color:#E8590C">02</span> WHAT IS HAPPENING</div><sc-for list="{{ sk4 }}" as="x" hint-placeholder-count="4"><div style="height:14px;width:{{ x.w }};background:linear-gradient(90deg,#111821 0%,#1C2633 50%,#111821 100%);background-size:200% 100%;animation:shimmer 1.4s linear infinite"></div></sc-for></div>
+<div style="grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 32px"><sc-for list="{{ sk8 }}" as="x" hint-placeholder-count="8"><div style="background:#060A0F;border:1px solid #202A36;padding:12px;display:flex;flex-direction:column;gap:9px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#8693A6">{{ x.k }}</span><div style="height:10px;width:90px;background:linear-gradient(90deg,#111821 0%,#1C2633 50%,#111821 100%);background-size:200% 100%;animation:shimmer 1.4s linear infinite"></div><div style="height:10px;width:70%;background:linear-gradient(90deg,#111821 0%,#1C2633 50%,#111821 100%);background-size:200% 100%;animation:shimmer 1.4s linear infinite"></div></div></sc-for></div>
+</div>
+</div></div>
+
+<div data-screen-label="S4 Stale data" style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em">S4 · STALE DATA</span>
+<div style="width:960px;height:600px;background:#000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5);display:flex;flex-direction:column">
+<header style="display:flex;align-items:center;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#FFB84D">◆ PARTLY STALE</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="display:flex;align-items:center;gap:14px;padding:10px 20px;background:#111821;border-bottom:1px solid #202A36;border-left:3px solid #FFB84D"><span style="font:600 11.5px 'IBM Plex Mono',monospace;color:#FFB84D">3 SOURCES OLDER THAN EXPECTED</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#B8C4D3">Reads that use them are marked. Posture is shown but flagged.</span><button style="margin-left:auto;font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:6px 10px;border:1px solid #FFB84D;background:transparent;color:#FFB84D;cursor:pointer">REFRESH NOW</button></div>
+<div style="flex:1;padding:16px 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px;align-content:start">
+<sc-for list="{{ staleCells }}" as="d" hint-placeholder-count="6"><div style="background:#060A0F;border:1px solid {{ d.bd }};padding:10px 12px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6"><span>{{ d.k }}</span><span style="color:{{ d.c }}">● {{ d.state }}</span></div><span style="font:600 24px 'IBM Plex Mono',monospace;color:{{ d.ink }}">––.––</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#B8C4D3">{{ d.note }}</span></div></sc-for>
+</div>
+</div></div>
+
+<div data-screen-label="S5 Failed source" style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em">S5 · FAILED DATA SOURCE</span>
+<div style="width:960px;height:600px;background:#000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5);display:flex;flex-direction:column">
+<header style="display:flex;align-items:center;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#EF4444">▲ 1 SOURCE DOWN</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="flex:1;padding:16px 20px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:40px;align-content:start">
+<div style="background:#060A0F;border:1px solid #202A36;border-left:3px solid #EF4444;padding:14px;display:flex;flex-direction:column;gap:10px">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EF4444">▲ ERROR · SSB STATBANK</span>
+<span style="font:italic 700 40px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">Statistics Norway isn't responding</span>
+<span style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:#B8C4D3">Last successful fetch [DATE] [TIME]. Tried –– times. We show nothing rather than a guess for the series it supplies.</span>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36"><sc-for list="{{ failed }}" as="f" hint-placeholder-count="4"><div style="border-bottom:1px solid #202A36;padding:8px 10px;display:flex;justify-content:space-between"><span style="font:600 11px 'IBM Plex Mono',monospace">{{ f }}</span><span style="font:600 11px 'IBM Plex Mono',monospace;color:#8693A6">—</span></div></sc-for></div>
+<div style="display:flex;gap:8px"><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">RETRY</button><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid #202A36;background:#111821;color:#EAF0F7;cursor:pointer">SOURCE STATUS</button></div>
+</div>
+<div style="padding:0;display:flex;flex-direction:column">
+<div style="margin:0 0 4px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em"><span style="color:#E8590C">02</span> AFFECTED READS</div>
+<sc-for list="{{ affected }}" as="a" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #202A36"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:italic 700 19px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ a.k }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">{{ a.v }}</span></div><span style="font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;padding:2px 6px 2px 5px;background:#111821;border-left:3px solid #8693A6;color:#B8C4D3">INCOMPLETE</span></div></sc-for>
+<span style="margin-top:10px;font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:#8693A6">Gauges built on missing data show as incomplete, never as calm.</span>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const setup = [
+      { n: '01', k: 'Connect data sources', v: 'FRED, Norges Bank, SSB, market prices. Free sources first.', cta: 'CONNECT', bd: '0', bg: '#E8590C', ink: '#FFFFFF' },
+      { n: '02', k: 'Import your portfolio', v: 'CSV from your bank or broker. Stays private to you.', cta: 'IMPORT CSV', bd: '1px solid #202A36', bg: '#111821', ink: '#EAF0F7' },
+      { n: '03', k: 'Set a goal', v: 'Target amount in NOK, horizon and the drawdown you can live with.', cta: 'SET GOAL', bd: '1px solid #202A36', bg: '#111821', ink: '#EAF0F7' },
+    ];
+    const mapping = [
+      ['ISIN', 'Identifier', '#202A36', 'Matched', '#22C55E'], ['Verdipapir', 'Name', '#202A36', 'Matched', '#22C55E'],
+      ['Antall', 'Quantity', '#202A36', 'Matched', '#22C55E'], ['Markedsverdi', 'Value · NOK', '#202A36', 'Matched', '#22C55E'],
+      ['Konto', 'Account type', '#FFB84D', '–– rows unrecognised · choose ASK / IPS / regular', '#FFB84D'], ['Valuta', 'Currency', '#202A36', 'Matched', '#22C55E'],
+    ].map(([col, field, bd, note, c]) => ({ col, field, bd, note, c }));
+    const preview = [1, 2, 3];
+    const sk4 = ['92%', '78%', '85%', '60%'].map(w => ({ w }));
+    const sk8 = ['DALIO', 'DRUCKENMILLER', 'MARKS', 'BUFFETT & GREENBLATT', 'TALEB & SPITZNAGEL', 'TUDOR JONES', 'BERNSTEIN & BOGLE', 'MUNGER'].map(k => ({ k }));
+    const staleCells = [
+      ['CPI-ATE', 'STALE 9D', '#FFB84D', '#8693A6', 'As of [DATE] · expected monthly', '#3A2E14'],
+      ['HOUSE PRICES', 'STALE 34D', '#FFB84D', '#8693A6', 'As of [DATE] · source delayed', '#3A2E14'],
+      ['NOWA', 'STALE 2D', '#FFB84D', '#8693A6', 'As of [DATE] · holiday?', '#3A2E14'],
+      ['I-44', 'LIVE', '#22C55E', '#EAF0F7', 'Norges Bank · [TIME]', '#202A36'],
+      ['EUR / NOK', 'LIVE', '#22C55E', '#EAF0F7', 'Market · [TIME]', '#202A36'],
+      ['NORWAY 10Y', 'LIVE', '#22C55E', '#EAF0F7', 'Norges Bank · [TIME]', '#202A36'],
+    ].map(([k, state, c, ink, note, bd]) => ({ k, state, c, ink, note, bd }));
+    const failed = ['CPI-ATE', 'Mainland GDP', 'Unemployment (LFS)', 'Household debt'];
+    const affected = [
+      { k: 'Norway panel', v: '4 of 13 indicators missing' }, { k: 'Bernstein & Bogle', v: 'Goal check uses CPI for real returns' },
+      { k: 'Ray Dalio', v: 'Norwegian growth input missing' },
+    ];
+    return { setup, mapping, preview, sk4, sk8, staleCells, failed, affected };
+  }
+}
+</script>
+</body>
+</html>

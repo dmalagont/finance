@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#15181D;font-family:'IBM Plex Mono',monospace}a{color:#3B82F6}a:hover{color:#7AA9F8}button,input{font-family:inherit}input::placeholder{color:#5D6878}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@keyframes swing{from{transform:rotate(-40deg)}to{transform:rotate(40deg)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+</helmet>
+
+<section id="library" data-screen-label="Learn library" style="padding:40px 44px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">06A</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Learn library · 1440</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><nav style="display:flex"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="6"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}">{{ n.label }}</a></sc-for></nav></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="display:flex;align-items:center;gap:20px;padding:14px 20px;border-bottom:1px solid #202A36;background:#060A0F">
+<span style="font:italic 700 44px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">Learn</span>
+<div style="flex:1;max-width:560px;display:flex;align-items:center;gap:10px;border:1px solid #202A36;background:#000;padding:8px 10px"><span style="color:#E8590C;font-weight:700">›</span><input placeholder="Search concepts, people, quotes" value="{{ q }}" onChange="{{ setQ }}" style="flex:1;background:transparent;border:0;outline:0;color:#EAF0F7;font:500 12px 'IBM Plex Mono',monospace"></div>
+<span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">{{ conceptCount }} CONCEPTS · 8 PROFILES · LESSONS [N]</span>
+</div>
+<main style="padding:28px 32px 36px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,3fr);gap:40px;align-items:start">
+<div style="padding:0;display:flex;flex-direction:column;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="margin:0 0 4px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">01</span><span>Concept index</span></div>
+<sc-for list="{{ concepts }}" as="c" hint-placeholder-count="14"><a href="#lesson" style="display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:8px;align-items:baseline;padding:7px 0;border-bottom:1px solid #111821;text-decoration:none;color:#EAF0F7" style-hover="background:#0B1118"><span style="font:700 11px 'IBM Plex Mono',monospace;color:#E8590C">{{ c.letter }}</span><span style="display:flex;flex-direction:column;gap:1px"><span style="font:600 12px 'IBM Plex Mono',monospace">{{ c.k }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">{{ c.v }}</span></span><span style="font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#8693A6;border:1px solid #202A36;padding:1px 5px">{{ c.panel }}</span></a></sc-for>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 115ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">02</span><span>Council profiles</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ profiles }}" as="p" hint-placeholder-count="8"><a href="#" style="border-bottom:1px solid #202A36;padding:12px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#EAF0F7" style-hover="background:#0B1118"><div style="position:relative;height:72px;background:repeating-linear-gradient(135deg,#0B1118 0 5px,#060A0F 5px 10px);border:1px solid #202A36"><span style="position:absolute;left:6px;top:4px;font:500 9.5px 'IBM Plex Mono',monospace;color:#8693A6">PORTRAIT</span></div><span style="font:italic 700 22px/.95 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ p.name }}</span><span style="font:600 10.5px/1.4 'IBM Plex Mono',monospace;color:#E8590C">{{ p.q }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ p.idea }}</span></a></sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:36px">
+<a href="#lesson" style="background:#060A0F;border:1px solid #202A36;border-top:2px solid #E8590C;padding:12px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:#EAF0F7;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 170ms both" style-hover="background:#0B1118">
+<span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#E8590C">FEATURED LESSON · 6 MIN</span>
+<span style="font:italic 700 34px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">The pendulum</span>
+<span style="font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3">Why investor mood swings between fear and greed — and why the middle is where it spends the least time.</span>
+<span style="font:600 11px 'IBM Plex Mono',monospace;color:#3B82F6">Start lesson →</span>
+</a>
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 14px;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 225ms both">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">03</span><span>Sourced quotes</span></div>
+<sc-for list="{{ quotes }}" as="x" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:5px;padding-bottom:10px;border-bottom:1px solid #C5CEDA"><span style="font:italic 700 20px/1.02 'Barlow Condensed',sans-serif;text-transform:uppercase;color:{{ x.ink }}">{{ x.t }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#536071">{{ x.s }}</span></div></sc-for>
+<span style="font:400 10.5px/1.45 'IBM Plex Mono',monospace;color:#536071">A quote appears only with a checkable source: document, date, link.</span>
+</div>
+</div>
+</main>
+</div>
+</section>
+
+<section id="lesson" data-screen-label="Lesson · The pendulum" style="padding:40px 44px 60px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">06B</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Lesson · The pendulum · teaching motion · 1440</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:20px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><span style="font:500 11px 'IBM Plex Mono',monospace;color:#8693A6;letter-spacing:.06em"><a href="#library" style="color:#8693A6;text-decoration:none">LEARN</a> / LESSONS / <span style="color:#EAF0F7">THE PENDULUM</span></span><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">HOWARD MARKS · 6 MIN</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<main style="padding:20px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:start">
+<div style="padding:0;display:flex;flex-direction:column;gap:14px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:center;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">01</span><span>Watch it swing</span><button onClick="{{ togglePlay }}" style="margin-left:auto;font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;padding:4px 10px;border:1px solid #202A36;background:#060A0F;color:#EAF0F7;cursor:pointer">{{ playLabel }}</button></div>
+<div style="position:relative;height:340px;overflow:hidden;background:radial-gradient(circle at 50% 0%,#0B1118 0,#060A0F 70%)">
+<div style="position:absolute;left:50%;top:24px;width:560px;height:560px;margin-left:-280px;border-radius:50%;border:1px dashed #202A36"></div>
+<div style="position:absolute;left:50%;top:18px;width:12px;height:12px;margin-left:-6px;background:#E8590C"></div>
+<div style="position:absolute;left:50%;top:24px;width:2px;height:280px;margin-left:-1px;transform-origin:50% 0;background:#B8C4D3;transition:transform 700ms cubic-bezier(0.23,1,0.32,1);transform:{{ rodTransform }};animation:{{ rodAnim }}"><div style="position:absolute;left:-17px;bottom:-34px;width:36px;height:36px;background:{{ bobColor }};transition:background 400ms"></div></div>
+<span style="position:absolute;left:44px;bottom:36px;font:italic 700 46px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase;color:#EF4444">Fear</span>
+<span style="position:absolute;right:44px;bottom:36px;font:italic 700 46px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase;color:#22C55E">Greed</span>
+<span style="position:absolute;left:50%;bottom:6px;transform:translateX(-50%);font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">THE MIDDLE · RARELY VISITED</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px">
+<sc-for list="{{ stages }}" as="s" hint-placeholder-count="3"><button onClick="{{ s.pick }}" style="text-align:left;padding:10px 12px;cursor:pointer;border:1px solid {{ s.bd }};background:{{ s.bg }};color:#EAF0F7;display:flex;flex-direction:column;gap:4px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:{{ s.c }}">{{ s.n }} · {{ s.k }}</span><span style="font:400 11px/1.4 'IBM Plex Mono',monospace;color:#B8C4D3">{{ s.short }}</span></button></sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ stageDetail }}" as="d" hint-placeholder-count="3"><div style="border-bottom:1px solid #202A36;padding:10px 12px;display:flex;flex-direction:column;gap:4px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">{{ d.k }}</span><span style="font:400 11.5px/1.45 'IBM Plex Mono',monospace;color:#EAF0F7">{{ d.v }}</span></div></sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:36px">
+<div style="padding:0;display:flex;flex-direction:column;gap:10px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">02</span><span>The idea</span></div>
+<span style="font:italic 700 36px/.92 'Barlow Condensed',sans-serif;text-transform:uppercase">Mood overshoots in both directions</span>
+<p style="margin:0;font:400 12.5px/1.6 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">Howard Marks describes investor psychology as a pendulum. It swings from euphoria, when risk feels absent, to panic, when nothing feels safe. It rarely rests at the sensible middle. The investor's job is not to predict the next swing, but to notice how far out it already is — and to lean the other way when it's extreme.</p>
+<p style="margin:0;font:400 12.5px/1.6 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">In the cockpit, the Marks gauge reads where the pendulum sits today using credit spreads, volatility and sentiment.</p>
+<a href="Investment Cockpit.dc.html#indicator-detail" style="font:500 11px 'IBM Plex Mono',monospace;color:#3B82F6">See today's reading: HY credit spread →</a>
+</div>
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 14px;display:flex;flex-direction:column;gap:8px">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">03</span><span>In his words</span></div>
+<span style="font:italic 700 24px/1.02 'Barlow Condensed',sans-serif;text-transform:uppercase">[VERIFIED MARKS QUOTE ON THE PENDULUM]</span>
+<span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#536071">— Howard Marks · The Most Important Thing (2011), ch. [N] · page [N]</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:8px">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">04</span><span>Check yourself</span></div>
+<span style="font:600 12.5px/1.45 'IBM Plex Mono',monospace">Spreads are near record lows and new issues are oversubscribed. Where is the pendulum?</span>
+<sc-for list="{{ quiz }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.pick }}" style="text-align:left;padding:9px 10px;cursor:pointer;font:500 12px 'IBM Plex Mono',monospace;border:1px solid {{ o.bd }};background:{{ o.bg }};color:#EAF0F7">{{ o.t }}</button></sc-for>
+<span style="font:400 11.5px/1.5 'IBM Plex Mono',monospace;color:{{ quizInk }}">{{ quizFeedback }}</span>
+</div>
+</div>
+</main>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { q: '', stage: null, playing: true, ans: null };
+  renderVals() {
+    const s = this.state;
+    const nav = ['Council', 'Panels', 'Norway', 'Portfolio', 'Journal', 'Learn'].map((label, i) => ({ label, ink: i === 5 ? '#EAF0F7' : '#8693A6', bar: i === 5 ? 'inset 0 0 0 200px #111821' : 'none' }));
+    const all = [
+      ['Base rate', 'How often something happened before', 'ALL'], ['Barbell', 'Very safe plus small, convex bets', 'PORTFOLIO'],
+      ['Convexity', 'Gaining more from big moves than you lose', 'STRESS'], ['Credit cycle', 'Lending loosens, then tightens', 'CYCLE'],
+      ['Debt cycle', 'Borrowing builds up, then must be paid down', 'CYCLE'], ['Equity risk premium', 'Extra return for owning stocks over bonds', 'VALUE'],
+      ['Fiscal rule', 'Norway spends about 3% of the oil fund a year', 'NORWAY'], ['Hedge ratio', 'How much currency risk you remove', 'PORTFOLIO'],
+      ['Inversion', 'Ask how to fail, then avoid it', 'JOURNAL'], ['Liquidity', 'Money and credit available to buy assets', 'LIQUIDITY'],
+      ['Pendulum', 'Investor mood swings from fear to greed', 'STRESS'], ['Real yield', 'Interest rate after inflation', 'MACRO'],
+      ['Regime', 'Growth and inflation, each rising or falling', 'MACRO'], ['Risk parity', 'Balance risk, not capital', 'PORTFOLIO'],
+      ['Spread', 'Extra yield over a safe benchmark', 'STRESS'], ['Trend', 'Price direction over a set window', 'MACRO'],
+    ];
+    const q = s.q.trim().toLowerCase();
+    const concepts = all.filter(([k, v]) => !q || (k + v).toLowerCase().includes(q)).map(([k, v, panel], i, arr) => ({ k, v, panel,
+      letter: i === 0 || arr[i - 1][0][0] !== k[0] ? k[0] : '' }));
+    const profiles = [
+      ['Ray Dalio', 'What regime and debt cycle are we in?', 'Economies move in debt cycles; balance a portfolio across growth and inflation regimes.'],
+      ['Stanley Druckenmiller', 'Where is liquidity going?', 'Follow central banks and liquidity; size up only when price confirms.'],
+      ['Howard Marks', 'How hot are psychology and credit?', 'Know where we are in the cycle; mood swings like a pendulum.'],
+      ['Buffett & Greenblatt', 'Good businesses at good prices?', 'Separate price from value; own quality bought sensibly.'],
+      ['Taleb & Spitznagel', 'Where am I fragile?', 'Avoid ruin first; hold small positions that gain from disorder.'],
+      ['Paul Tudor Jones', 'Is the trend with me?', 'Respect the trend and defend the downside before the upside.'],
+      ['Bernstein & Bogle', 'Will this meet my goals?', 'Costs, diversification and time decide most outcomes; plan for deep risks.'],
+      ['Charlie Munger', 'What would make this stupid?', 'Invert, use many mental models, and avoid errors before seeking brilliance.'],
+    ].map(([name, q2, idea]) => ({ name, q: q2, idea }));
+    const quotes = [
+      { t: '“We simply attempt to be fearful when others are greedy and to be greedy only when others are fearful.”', s: '— Warren Buffett · Berkshire Hathaway shareholder letter, 1986', ink: '#0A0F16' },
+      { t: '[QUOTE — awaiting verified source]', s: '— Charlie Munger · [SOURCE, YEAR]', ink: '#536071' },
+      { t: '[QUOTE — awaiting verified source]', s: '— Ray Dalio · [SOURCE, YEAR]', ink: '#536071' },
+    ];
+    const ST = [
+      { k: 'FEAR', c: '#EF4444', angle: -40, short: 'Panic. Safety at any price.', detail: [['INVESTORS', 'Sell what they must, not what they should. Cash feels like the only safe asset.'], ['PRICES', 'Below fair value. Bargains appear but nobody wants them.'], ['CREDIT', 'Hard to get. Spreads wide, issuance stops.']] },
+      { k: 'THE MIDDLE', c: '#B8C4D3', angle: 0, short: 'Balanced. Rare and brief.', detail: [['INVESTORS', 'Weigh risk and return fairly. Few headlines.'], ['PRICES', 'Close to fair value.'], ['CREDIT', 'Available at sensible terms.']] },
+      { k: 'GREED', c: '#22C55E', angle: 40, short: 'Euphoria. Risk feels absent.', detail: [['INVESTORS', 'Fear missing out more than losing money.'], ['PRICES', 'Above fair value, justified by “this time is different”.'], ['CREDIT', 'Easy. Spreads tight, weak borrowers funded.']] },
+    ];
+    const stages = ST.map((x, i) => ({ ...x, n: '0' + (i + 1), pick: () => this.setState({ stage: i, playing: false }),
+      bg: s.stage === i ? '#111821' : '#060A0F', bd: s.stage === i ? x.c : '#202A36' }));
+    const cur = s.stage == null ? null : ST[s.stage];
+    const stageDetail = (cur ? cur.detail : [['INVESTORS', 'Pick a stage to see how people behave.'], ['PRICES', 'Or let it swing and watch how little time it spends in the middle.'], ['CREDIT', 'Credit usually swings with mood.']]).map(([k, v]) => ({ k, v }));
+    const opts = ['Near fear', 'In the middle', 'Toward greed'];
+    const quiz = opts.map((t, i) => ({ t, pick: () => this.setState({ ans: i }),
+      bd: s.ans === i ? (i === 2 ? '#22C55E' : '#EF4444') : '#202A36', bg: s.ans === i ? '#111821' : '#000' }));
+    const fb = s.ans == null ? 'Pick one.' : s.ans === 2 ? 'Right. Tight spreads and eager lenders mean risk is being ignored — the pendulum is out toward greed.' : 'Not quite. Tight spreads and eager lenders mean investors are ignoring risk — that is the greed side.';
+    return {
+      nav, q: s.q, setQ: e => this.setState({ q: e.target.value }), concepts, conceptCount: all.length, profiles, quotes,
+      stages, stageDetail, quiz, quizFeedback: fb, quizInk: s.ans == null ? '#8693A6' : s.ans === 2 ? '#22C55E' : '#EF4444',
+      rodAnim: s.playing ? 'swing 2.6s cubic-bezier(0.45,0,0.55,1) infinite alternate' : 'none',
+      rodTransform: `rotate(${cur ? cur.angle : 0}deg)`, bobColor: cur ? cur.c : '#E8590C',
+      playLabel: s.playing ? '❚❚ HOLD' : '▶ SWING', togglePlay: () => this.setState(st => ({ playing: !st.playing, stage: st.playing ? st.stage : null })),
+    };
+  }
+}
+</script>
+</body>
+</html>

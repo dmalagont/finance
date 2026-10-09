@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#15181D;font-family:'IBM Plex Mono',monospace}a{color:#3B82F6}a:hover{color:#7AA9F8}button{font-family:inherit}input[type=range]{accent-color:#E8590C}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+</helmet>
+<section id="portfolio" data-screen-label="Portfolio lab" style="padding:40px 44px 60px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">04</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Portfolio lab · 1440</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><nav style="display:flex"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="6"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}">{{ n.label }}</a></sc-for></nav><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">NOK BASE · [DATE]</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="display:flex;align-items:center;gap:28px;padding:12px 20px;border-bottom:1px solid #202A36;background:#060A0F">
+<span style="font:italic 700 40px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">Portfolio lab</span>
+<sc-for list="{{ top }}" as="t" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;gap:2px;padding-left:20px;border-left:1px solid #202A36"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">{{ t.k }}</span><span style="font:600 16px 'IBM Plex Mono',monospace">{{ t.v }}</span></div></sc-for>
+<div style="margin-left:auto;display:flex;gap:8px"><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid #202A36;background:#111821;color:#EAF0F7;cursor:pointer" style-active="transform:scale(0.97)">IMPORT CSV</button><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">TEST A CHANGE</button></div>
+</div>
+<main style="padding:28px 32px 36px;display:flex;flex-direction:column;gap:40px">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px">
+<div style="padding:0;display:flex;flex-direction:column;gap:8px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="margin:0;padding:0;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:center;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">01</span><span>Allocation</span>
+<div style="margin-left:auto;display:flex"><sc-for list="{{ dims }}" as="d" hint-placeholder-count="5"><button onClick="{{ d.pick }}" style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border:0;border-left:1px solid #202A36;cursor:pointer;background:{{ d.bg }};color:{{ d.ink }};box-shadow:{{ d.bar }}">{{ d.label }}</button></sc-for></div></div>
+<sc-for list="{{ alloc }}" as="a" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:150px minmax(0,1fr) 60px 60px;gap:12px;align-items:center;padding:5px 0;border-bottom:1px solid #111821"><span style="font:500 11.5px 'IBM Plex Mono',monospace">{{ a }}</span><span style="height:12px;background:repeating-linear-gradient(90deg,#111821 0 16px,#060A0F 16px 18px)"></span><span style="text-align:right;font:600 12px 'IBM Plex Mono',monospace">––%</span><span style="text-align:right;font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">tgt ––%</span></div></sc-for>
+<span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">Bars fill from imported holdings · target from your plan</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:8px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 115ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">02</span><span>Risk contribution vs capital weight</span><span style="margin-left:auto;color:#8693A6;font-weight:500">BRIDGEWATER-STYLE VIEW</span></div>
+<div style="display:flex;gap:16px;font:500 10.5px 'IBM Plex Mono',monospace;color:#8693A6"><span><span style="display:inline-block;width:10px;height:10px;background:#8693A6;vertical-align:-1px"></span> Capital</span><span tabIndex="0" onMouseEnter="{{ tips.risk.on }}" onMouseLeave="{{ tips.risk.off }}" onFocus="{{ tips.risk.on }}" onBlur="{{ tips.risk.off }}" style="border-bottom:1px dotted #E8590C;cursor:help;position:relative"><span style="display:inline-block;width:10px;height:10px;background:#E8590C;vertical-align:-1px"></span> Share of risk (volatility)<sc-if value="{{ tips.risk.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:calc(100% + 8px);left:0;z-index:20;width:290px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal;text-align:left;font-weight:400"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;text-transform:uppercase">{{ tips.risk.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.risk.d }}</span></span></sc-if></span></div>
+<sc-for list="{{ risk }}" as="r" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:150px minmax(0,1fr) 110px;gap:12px;align-items:center;padding:4px 0;border-bottom:1px solid #111821"><span style="font:500 11.5px 'IBM Plex Mono',monospace">{{ r }}</span><div style="display:flex;flex-direction:column;gap:2px"><span style="height:7px;background:repeating-linear-gradient(90deg,#1A222D 0 16px,#060A0F 16px 18px)"></span><span style="height:7px;background:repeating-linear-gradient(90deg,#3A1A08 0 16px,#060A0F 16px 18px)"></span></div><span style="text-align:right;font:600 11px 'IBM Plex Mono',monospace">––% / <span style="color:#FF9A5C">––%</span></span></div></sc-for>
+<span style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">A small capital weight can carry most of the risk. Equities are usually far more volatile than bonds, so a 60/40 mix gets most of its swings from the 60.</span>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(0,4fr) minmax(0,4fr) minmax(0,4fr);gap:40px">
+<div style="padding:0;display:flex;flex-direction:column;gap:8px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 170ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">03</span><span>Regime exposure</span><span tabIndex="0" onMouseEnter="{{ tips.regime.on }}" onMouseLeave="{{ tips.regime.off }}" onFocus="{{ tips.regime.on }}" onBlur="{{ tips.regime.off }}" style="margin-left:auto;color:#8693A6;font-weight:500;border-bottom:1px dotted #E8590C;cursor:help;position:relative">DALIO<sc-if value="{{ tips.regime.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:calc(100% + 8px);right:0;z-index:20;width:290px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal;text-align:left;font-weight:400"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;text-transform:uppercase">{{ tips.regime.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.regime.d }}</span></span></sc-if></span></div>
+<div style="display:grid;grid-template-columns:24px minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto 1fr 1fr;gap:4px">
+<span></span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#8693A6;text-align:center">INFLATION ↓</span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#8693A6;text-align:center">INFLATION ↑</span>
+<span style="writing-mode:vertical-rl;transform:rotate(180deg);font:600 10px 'IBM Plex Mono',monospace;color:#8693A6;text-align:center">GROWTH ↑</span>
+<sc-for list="{{ regimesTop }}" as="g" hint-placeholder-count="2"><div style="background:#111821;padding:10px;display:flex;flex-direction:column;gap:4px;border-top:3px solid {{ g.c }}"><span style="font:600 10.5px 'IBM Plex Mono',monospace">{{ g.k }}</span><span style="font:600 20px 'IBM Plex Mono',monospace">––%</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#8693A6">{{ g.wins }}</span></div></sc-for>
+<span style="writing-mode:vertical-rl;transform:rotate(180deg);font:600 10px 'IBM Plex Mono',monospace;color:#8693A6;text-align:center">GROWTH ↓</span>
+<sc-for list="{{ regimesBot }}" as="g" hint-placeholder-count="2"><div style="background:#111821;padding:10px;display:flex;flex-direction:column;gap:4px;border-top:3px solid {{ g.c }}"><span style="font:600 10.5px 'IBM Plex Mono',monospace">{{ g.k }}</span><span style="font:600 20px 'IBM Plex Mono',monospace">––%</span><span style="font:400 10px 'IBM Plex Mono',monospace;color:#8693A6">{{ g.wins }}</span></div></sc-for>
+</div>
+<span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">Share of portfolio that tends to do well in each regime · ● you are here: [REGIME]</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 225ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">04</span><span>Crash payoff</span><span style="margin-left:auto;color:#8693A6;font-weight:500">TALEB &amp; SPITZNAGEL</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<sc-for list="{{ crash }}" as="c" hint-placeholder-count="2"><div style="border-bottom:1px solid #202A36;padding:12px;display:flex;flex-direction:column;gap:6px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">IF GLOBAL EQUITIES</span><span style="font:italic 700 44px/.9 'Barlow Condensed',sans-serif;color:#EF4444">{{ c.k }}</span><span style="font:600 18px 'IBM Plex Mono',monospace">––.–– <span style="font-size:11px;color:#8693A6">NOK m</span></span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">portfolio ––% · hedges +––</span></div></sc-for>
+</div>
+<div style="position:relative;height:130px;background:#000;border:1px solid #202A36">
+<svg viewBox="0 0 300 130" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><line x1="200" x2="200" y1="0" y2="130" stroke="#202A36" stroke-width="1" vector-effect="non-scaling-stroke"></line><line x1="0" x2="300" y1="52" y2="52" stroke="#202A36" stroke-width="1" vector-effect="non-scaling-stroke"></line><polyline points="{{ payLinear }}" fill="none" stroke="#8693A6" stroke-width="1.5" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"></polyline><polyline points="{{ payConvex }}" fill="none" stroke="#E8590C" stroke-width="2.5" vector-effect="non-scaling-stroke"></polyline></svg>
+<span style="position:absolute;left:6px;top:4px;font:500 9.5px 'IBM Plex Mono',monospace;color:#5D6878">PORTFOLIO vs MARKET · ILLUSTRATIVE</span>
+<span style="position:absolute;left:6px;bottom:3px;font:500 9.5px 'IBM Plex Mono',monospace;color:#8693A6">−40%</span><span style="position:absolute;left:62%;bottom:3px;font:500 9.5px 'IBM Plex Mono',monospace;color:#8693A6">0</span><span style="position:absolute;right:6px;bottom:3px;font:500 9.5px 'IBM Plex Mono',monospace;color:#8693A6">+20%</span>
+<span style="position:absolute;right:6px;top:4px;display:flex;gap:10px;font:500 9.5px 'IBM Plex Mono',monospace"><span style="color:#8693A6">┅ no hedges</span><span style="color:#E8590C">▬ with convex sleeve</span></span>
+</div>
+<span style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">Does anything you own go <i>up</i> when markets break? Convex positions — long volatility, long-duration bonds, gold — show here as the hedge offset.</span>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 280ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">05</span><span tabIndex="0" onMouseEnter="{{ tips.hedge.on }}" onMouseLeave="{{ tips.hedge.off }}" onFocus="{{ tips.hedge.on }}" onBlur="{{ tips.hedge.off }}" style="border-bottom:1px dotted #E8590C;cursor:help;position:relative">NOK hedge ratio<sc-if value="{{ tips.hedge.open }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:calc(100% + 8px);left:0;z-index:20;width:290px;display:flex;flex-direction:column;gap:4px;background:#111821;border:1px solid #202A36;border-top:2px solid #E8590C;padding:8px 10px;box-shadow:0 10px 30px rgba(0,0,0,.6);text-transform:none;letter-spacing:0;white-space:normal;text-align:left;font-weight:400"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#EAF0F7;text-transform:uppercase">{{ tips.hedge.t }}</span><span style="font:400 11px/1.45 'IBM Plex Mono',monospace;color:#B8C4D3">{{ tips.hedge.d }}</span></span></sc-if></span></div>
+<div style="display:flex;align-items:baseline;gap:10px"><span style="font:600 40px/1 'IBM Plex Mono',monospace">{{ hedge }}%</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#8693A6">of foreign assets hedged to NOK · current ––%</span></div>
+<input type="range" min="0" max="100" step="5" value="{{ hedge }}" onChange="{{ setHedge }}" style="width:100%">
+<div style="display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:#8693A6"><span>0 · FULL CURRENCY RISK</span><span>100 · FULLY HEDGED</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36">
+<div style="border-bottom:1px solid #202A36;padding:8px 10px"><div style="font:600 10px 'IBM Plex Mono',monospace;color:#8693A6;letter-spacing:.08em">IF NOK +10%</div><div style="font:600 15px 'IBM Plex Mono',monospace">––.–– NOK m</div></div>
+<div style="border-bottom:1px solid #202A36;padding:8px 10px"><div style="font:600 10px 'IBM Plex Mono',monospace;color:#8693A6;letter-spacing:.08em">IF NOK −10%</div><div style="font:600 15px 'IBM Plex Mono',monospace">––.–– NOK m</div></div>
+</div>
+<span style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3;text-wrap:pretty">{{ hedgeNote }}</span>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:40px">
+<div style="padding:0;display:flex;flex-direction:column;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 335ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">06</span><span>Scenarios</span><span style="margin-left:auto;color:#8693A6;font-weight:500">12 MONTHS</span></div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) 150px 80px 80px;gap:12px;padding:8px 0;border-bottom:1px solid #202A36;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6"><span>SCENARIO</span><span>PROBABILITY</span><span style="text-align:right">MINE</span><span style="text-align:right">60/40</span></div>
+<sc-for list="{{ scen }}" as="s" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:minmax(0,1fr) 150px 80px 80px;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid #111821"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 12px 'IBM Plex Mono',monospace">{{ s.k }}</span><span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6">{{ s.d }}</span></div><span style="display:flex;gap:6px;align-items:center"><span style="font:600 12px 'IBM Plex Mono',monospace">––%</span><span style="font:500 9px 'IBM Plex Mono',monospace;letter-spacing:.06em;padding:1px 4px;color:{{ s.sc }};border:1px solid {{ s.sc }}">{{ s.src }}</span></span><span style="text-align:right;font:600 12px 'IBM Plex Mono',monospace">±––%</span><span style="text-align:right;font:400 12px 'IBM Plex Mono',monospace;color:#8693A6">±––%</span></div></sc-for>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 390ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">07</span><span>Compare with reference portfolios</span></div>
+<div style="display:grid;grid-template-columns:130px repeat(5,minmax(0,1fr));gap:0;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:#8693A6;border-bottom:1px solid #202A36"><span style="padding:8px 0"></span><sc-for list="{{ refs }}" as="r" hint-placeholder-count="5"><span style="padding:8px 6px;text-align:right;color:{{ r.ink }};background:{{ r.bg }}">{{ r.k }}</span></sc-for></div>
+<sc-for list="{{ refRows }}" as="row" hint-placeholder-count="7"><div style="display:grid;grid-template-columns:130px repeat(5,minmax(0,1fr));border-bottom:1px solid #111821"><span style="padding:7px 0;font:500 11px 'IBM Plex Mono',monospace;color:#B8C4D3">{{ row.k }}</span><sc-for list="{{ row.v }}" as="v" hint-placeholder-count="5"><span style="padding:7px 6px;text-align:right;font:600 11.5px 'IBM Plex Mono',monospace;color:{{ v.ink }};background:{{ v.bg }}">{{ v.t }}</span></sc-for></div></sc-for>
+<span style="margin-top:8px;font:400 10.5px/1.5 'IBM Plex Mono',monospace;color:#8693A6">All Weather shown as the commonly published retail approximation. Barbell = mostly very safe assets plus a small convex sleeve. Risk figures computed from history once data is connected.</span>
+</div>
+</div>
+</main>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { dim: 'Asset class', hedge: 50 };
+  renderVals() {
+    const nav = ['Council', 'Panels', 'Norway', 'Portfolio', 'Journal', 'Learn'].map((label, i) => ({ label, ink: i === 3 ? '#EAF0F7' : '#8693A6', bar: i === 3 ? 'inset 0 0 0 200px #111821' : 'none' }));
+    const top = [{ k: 'VALUE', v: '––.–– NOK m' }, { k: 'HOLDINGS', v: '––' }, { k: 'VOLATILITY 1Y', v: '––%' }, { k: 'LAST IMPORT', v: '[DATE]' }];
+    const D = {
+      'Asset class': ['Global equities', 'Norwegian equities', 'Bonds · NOK', 'Bonds · global', 'Gold', 'Cash · NOK'],
+      Region: ['Norway', 'Nordics ex-NO', 'Europe', 'North America', 'Asia-Pacific', 'Emerging'],
+      Sector: ['Technology', 'Financials', 'Energy', 'Healthcare', 'Industrials', 'Other'],
+      Factor: ['Market', 'Value', 'Quality', 'Momentum', 'Size', 'Low volatility'],
+      Currency: ['NOK', 'USD', 'EUR', 'SEK / DKK', 'GBP', 'Other'],
+    };
+    const dims = Object.keys(D).map(label => ({ label, pick: () => this.setState({ dim: label }),
+      bg: this.state.dim === label ? '#060A0F' : 'transparent', ink: this.state.dim === label ? '#EAF0F7' : '#8693A6', bar: this.state.dim === label ? 'inset 0 2px 0 #E8590C' : 'none' }));
+    const risk = ['Equities', 'Bonds', 'Gold', 'Cash', 'Currency (unhedged)'];
+    const regimesTop = [{ k: 'Growth ↑ · Inflation ↓', wins: 'equities, credit', c: '#22C55E' }, { k: 'Growth ↑ · Inflation ↑', wins: 'commodities, linkers', c: '#FFB84D' }];
+    const regimesBot = [{ k: 'Growth ↓ · Inflation ↓', wins: 'nominal bonds, cash', c: '#3B82F6' }, { k: 'Growth ↓ · Inflation ↑', wins: 'gold, linkers', c: '#EF4444' }];
+    const crash = [{ k: '−20%' }, { k: '−40%' }];
+    const h = this.state.hedge;
+    const hedgeNote = h < 30 ? 'Low hedge: when markets fall the krone often weakens too, so foreign assets lose less in NOK. A natural cushion — but your NOK return swings with the currency.'
+      : h > 70 ? 'High hedge: returns follow local markets, not the krone. Steadier in calm times, but you lose the cushion a weaker krone often gives in a crisis.'
+      : 'Middle ground: part currency cushion in a crisis, part protection if the krone strengthens. Hedging also has a cost or gain from the interest-rate gap.';
+    const S = { mi: ['MARKET-IMPLIED', '#3B82F6'], mo: ['MODEL', '#FF9A5C'], br: ['BASE RATE', '#B8C4D3'], me: ['MY ESTIMATE', '#EAF0F7'] };
+    const scen = [
+      ['Soft landing', 'Inflation eases, no recession', 'mo'], ['Recession', 'Earnings fall, rates cut', 'br'],
+      ['Stagflation', 'Weak growth, sticky inflation', 'mo'], ['Inflation boom', 'Strong growth, rising prices', 'me'],
+      ['Krone shock', 'NOK −15% vs basket', 'mi'], ['Oil collapse', 'Brent −40%, fiscal room shrinks', 'br'],
+    ].map(([k, d, s]) => ({ k, d, src: S[s][0], sc: S[s][1] }));
+    const refsK = ['Mine', 'All Weather', '60/40', 'Permanent', 'Barbell'];
+    const col = i => ({ ink: i === 0 ? '#FFFFFF' : '#B8C4D3', bg: i === 0 ? '#3A1A08' : 'transparent' });
+    const refs = refsK.map((k, i) => ({ k, ...col(i), ink: i === 0 ? '#FFFFFF' : '#8693A6' }));
+    const rows = [
+      ['Equities', ['––%', '30%', '60%', '25%', '—']], ['Long bonds', ['––%', '40%', '—', '25%', '—']],
+      ['Interm. bonds', ['––%', '15%', '40%', '—', '—']], ['Gold', ['––%', '7.5%', '—', '25%', '—']],
+      ['Commodities', ['––%', '7.5%', '—', '—', '—']], ['Cash', ['––%', '—', '—', '25%', '—']],
+      ['Very safe / convex', ['––%', '—', '—', '—', '~85–90 / 10–15']],
+      ['Max drawdown', ['––%', '––%', '––%', '––%', '––%']], ['Crash payoff −40%', ['––', '––', '––', '––', '––']],
+    ];
+    const refRows = rows.map(([k, v]) => ({ k, v: v.map((t, i) => ({ t, ...col(i) })) }));
+    const series = (seed, n, bumps) => { let s = seed; const r = () => (s = (s * 9301 + 49297) % 233280) / 233280;
+      let v = 0; const raw = []; for (let i = 0; i < n; i++) { v = v * 0.96 + (r() - 0.5) * 0.35; let y = v; bumps.forEach(([at, amp, w]) => { const d = (i / (n - 1) - at) / w; y += amp * Math.exp(-d * d); }); raw.push(y); }
+      const lo = Math.min(...raw), hi = Math.max(...raw); return raw.map(y => 0.12 + 0.76 * (y - lo) / (hi - lo || 1)); };
+    const toPts = (vals, W, H) => vals.map((v, i) => `${(i / (vals.length - 1) * W).toFixed(1)},${((1 - v) * H).toFixed(1)}`).join(' ');
+    const tip = (k, t, d) => ({ t, d, open: this.state.tip === k, on: () => this.setState({ tip: k }), off: () => this.setState({ tip: null }) });
+    const mx = x => (x + 40) / 60 * 300, my = y => 52 - y / 40 * 78 * 1;
+    const payLinear = [-40, 20].map(x => `${mx(x)},${my(x * 0.75)}`).join(' ');
+    const payConvex = Array.from({ length: 31 }, (_, i) => { const x = -40 + i * 2; const y = x * 0.75 + 0.022 * Math.max(0, -x - 8) ** 2 - 0.2; return `${mx(x).toFixed(1)},${my(y).toFixed(1)}`; }).join(' ');
+    const tips = {
+      risk: tip('risk', 'Risk contribution', 'How much of the portfolio’s total swings come from each holding, after accounting for how volatile it is and how it moves with the rest.'),
+      hedge: tip('hedge', 'Hedge ratio', 'The share of foreign assets where currency risk is removed with forwards. 0% means you carry the full move in USD, EUR and others against NOK.'),
+      regime: tip('regime', 'Four regimes', 'Dalio’s frame: growth and inflation can each rise or fall vs expectations. A balanced portfolio holds something that works in each box.'),
+    };
+    return { payLinear, payConvex, tips, nav, top, dims, alloc: D[this.state.dim], risk, regimesTop, regimesBot, crash, hedge: h,
+      setHedge: e => this.setState({ hedge: +e.target.value }), hedgeNote, scen, refs, refRows };
+  }
+}
+</script>
+</body>
+</html>

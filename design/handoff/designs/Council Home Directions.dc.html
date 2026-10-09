@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#15181D;font-family:'IBM Plex Mono',monospace}a{color:#3B82F6}a:hover{color:#7AA9F8}button{font-family:inherit}@keyframes rise{from{opacity:0;transform:translateY(10px)}}@keyframes reveal{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@keyframes grow{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}@keyframes marquee{to{transform:translateX(-50%)}}@keyframes live{0%{box-shadow:0 0 0 0 rgba(34,197,94,.55)}100%{box-shadow:0 0 0 7px rgba(34,197,94,0)}}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+</helmet>
+
+<section id="A" data-screen-label="A Council home · Rows" style="padding:40px 44px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">A</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Council home · Rows — the board as a dense table, posture as a strip</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><nav style="display:flex"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="5"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}">{{ n.label }}</a></sc-for></nav><span style="margin-left:auto;display:flex;align-items:center;gap:7px;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6"><span style="width:7px;height:7px;border-radius:50%;background:#22C55E;animation:live 2s ease-out infinite"></span>LIVE · [DATE]</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="overflow:hidden;border-bottom:1px solid #202A36;background:#060A0F"><div style="display:flex;width:max-content;animation:marquee 70s linear infinite" style-hover="animation-play-state:paused"><sc-for list="{{ ticker }}" as="k" hint-placeholder-count="14"><span style="display:flex;gap:9px;padding:8px 18px;border-right:1px solid #202A36;font:500 11.5px 'IBM Plex Mono',monospace;color:#8693A6;white-space:nowrap"><span>{{ k.sym }}</span><span style="color:#EAF0F7">––.––</span><span>±––.––%</span></span></sc-for></div></div>
+
+<div style="background:#E8ECF1;color:#0A0F16;border-bottom:1px solid #C5CEDA;padding:14px 20px;display:grid;grid-template-columns:auto 460px minmax(0,1fr) auto;gap:28px;align-items:center;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#536071"><span style="color:#A93D08;font-weight:700">01</span> POSTURE · SAMPLE</span><span style="font:italic 700 52px/.88 'Barlow Condensed',sans-serif;text-transform:uppercase">Cautious</span></div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px"><sc-for list="{{ steps }}" as="p" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:5px"><div style="height:12px;background:{{ p.bg }};transform:skewX(-14deg);animation:reveal 260ms cubic-bezier(0.23,1,0.32,1) {{ p.delay }} both"></div><span style="font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.04em;text-transform:uppercase;color:{{ p.ink }}">{{ p.label }}</span></div></sc-for></div>
+<div style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ reasonsL }}" as="r" hint-placeholder-count="3"><span style="font:500 11px 'IBM Plex Mono',monospace;padding:4px 8px 4px 7px;background:#D3DBE5;border-left:3px solid {{ r.c }}"><span style="font-weight:700;color:{{ r.c }}">{{ r.who }}</span> · {{ r.short }}</span></sc-for></div>
+<div style="display:flex;gap:8px"><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">LOG DECISION</button><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border:1px solid #C5CEDA;background:#D3DBE5;color:#0A0F16;cursor:pointer" style-active="transform:scale(0.97)">RED TEAM</button></div>
+</div>
+
+<main style="padding:14px 20px 20px;display:grid;grid-template-columns:minmax(0,9fr) minmax(0,3fr);gap:40px;align-items:start">
+<div style="padding:0;display:flex;flex-direction:column;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 115ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;align-items:baseline;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">02</span><span>The council</span><span style="margin-left:auto;color:#8693A6;font-weight:500">SORT: RISK ▾</span></div>
+<div style="display:grid;grid-template-columns:28px 200px minmax(0,1fr) 140px 96px minmax(0,1fr) 70px;gap:14px;padding:8px 0;border-bottom:1px solid #202A36;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6"><span>#</span><span>MEMBER</span><span>ASKS</span><span>GAUGE 1→5</span><span>STATE</span><span>READ</span><span style="text-align:right">Δ WK</span></div>
+<sc-for list="{{ councilSorted }}" as="m" hint-placeholder-count="8">
+<a href="Investment Cockpit.dc.html#indicator-detail" style="display:grid;grid-template-columns:28px 200px minmax(0,1fr) 140px 96px minmax(0,1fr) 70px;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid #202A36;text-decoration:none;color:#EAF0F7;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) {{ m.delay }} both" style-hover="background:#0B1118">
+<span style="font:700 11px 'IBM Plex Mono',monospace;color:#E8590C">{{ m.idx }}</span>
+<span style="font:italic 700 21px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ m.name }}</span>
+<span style="font:400 11.5px/1.35 'IBM Plex Mono',monospace;color:#B8C4D3">{{ m.q }}</span>
+<span style="display:flex;align-items:center;gap:8px"><span style="display:flex;gap:2px;animation:reveal 420ms cubic-bezier(0.23,1,0.32,1) {{ m.gDelay }} both"><sc-for list="{{ m.segs }}" as="g" hint-placeholder-count="5"><span style="width:16.4px;height:10px;background:{{ g.bg }}"></span></sc-for></span><span style="font:700 11px 'IBM Plex Mono',monospace;color:{{ m.c }}">{{ m.n }}</span></span>
+<span style="justify-self:start;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid {{ m.c }};color:{{ m.c }}">{{ m.tag }}</span>
+<span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#8693A6">[ONE-LINE READ]</span>
+<span style="text-align:right;font:600 11px 'IBM Plex Mono',monospace;color:#8693A6">±–</span>
+</a>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:36px">
+<div style="padding:0;display:flex;flex-direction:column;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 170ms both">
+<div style="margin:0 0 4px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">03</span><span>What changed</span></div>
+<sc-for list="{{ changes }}" as="c" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:38px minmax(0,1fr);gap:8px;padding:8px 0;border-bottom:1px solid #202A36"><span style="font:600 10px 'IBM Plex Mono',monospace;color:#8693A6">{{ c.day }}</span><div style="display:flex;flex-direction:column;gap:3px;border-left:3px solid {{ c.c }};padding-left:8px"><span style="font:600 11.5px/1.35 'IBM Plex Mono',monospace">{{ c.what }}</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#8693A6">{{ c.note }}</span></div></div></sc-for>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:6px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 225ms both">
+<div style="margin:0 0 4px;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">04</span><span>What may happen</span></div>
+<span style="font:600 11.5px 'IBM Plex Mono',monospace">Global equities −20% in 12m</span>
+<sc-for list="{{ sources }}" as="s" hint-placeholder-count="4"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:1px 5px;color:{{ s.c }};border:1px {{ s.line }} {{ s.c }}">{{ s.label }}</span><span style="font:600 12px 'IBM Plex Mono',monospace">––% <span style="font-weight:400;color:#8693A6;font-size:10.5px">hit ––%</span></span></div></sc-for>
+</div>
+</div>
+</main>
+</div>
+</section>
+
+<section id="B" data-screen-label="B Council home · Board room" style="padding:40px 44px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">B</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Council home · Board room — eight vertical meters, disagreement as skyline</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><nav style="display:flex"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="5"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}">{{ n.label }}</a></sc-for></nav><span style="margin-left:auto;font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">[DATE] · 07:00 CET</span></header>
+<div style="height:2px;background:#E8590C"></div>
+<main style="padding:28px 32px 36px;display:flex;flex-direction:column;gap:40px">
+<div style="display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px">
+<div style="background:#E8ECF1;color:#0A0F16;border:1px solid #C5CEDA;padding:10px 12px 16px;display:flex;flex-direction:column;gap:16px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="margin:-10px -12px 0;padding:6px 12px;background:#DAE0E8;border-bottom:1px solid #C5CEDA;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#A93D08;font-weight:700">01</span><span>Posture</span><span style="margin-left:auto;color:#536071;font-weight:500">SAMPLE</span></div>
+<span style="font:italic 700 96px/.84 'Barlow Condensed',sans-serif;text-transform:uppercase">Cau&shy;tious</span>
+<div style="display:flex;flex-direction:column;gap:3px"><sc-for list="{{ stepsRev }}" as="p" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;align-items:center"><span style="height:12px;background:{{ p.bg }}"></span><span style="font:600 10.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:{{ p.ink }}">{{ p.label }}</span></div></sc-for></div>
+<div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #C5CEDA;padding-top:10px"><sc-for list="{{ reasonsL }}" as="r" hint-placeholder-count="3"><div style="font:400 11.5px/1.4 'IBM Plex Mono',monospace;color:#2E3947;border-left:3px solid {{ r.c }};padding-left:8px"><b style="color:#0A0F16">{{ r.who }}</b> — {{ r.short }}</div></sc-for></div>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:12px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 115ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">02</span><span>The board</span><span style="margin-left:auto;color:#8693A6;font-weight:500">TALLER = RISKIER · SAMPLE STATES</span></div>
+<div style="display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0 24px;border-top:1px solid #202A36;flex:1">
+<sc-for list="{{ council }}" as="m" hint-placeholder-count="8">
+<a href="Investment Cockpit.dc.html#indicator-detail" style="border-bottom:1px solid #202A36;padding:12px 10px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:#EAF0F7" style-hover="background:#0B1118">
+<div style="display:flex;flex-direction:column-reverse;gap:3px;animation:grow 520ms cubic-bezier(0.23,1,0.32,1) {{ m.gDelay }} both"><sc-for list="{{ m.segs }}" as="g" hint-placeholder-count="5"><span style="height:26px;background:{{ g.bg }}"></span></sc-for></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:700 20px 'IBM Plex Mono',monospace;color:{{ m.c }}">{{ m.n }}</span><span style="font:600 9.5px 'IBM Plex Mono',monospace;letter-spacing:.06em;padding:1px 5px 1px 4px;background:#111821;border-left:3px solid {{ m.c }};color:{{ m.c }}">{{ m.tagShort }}</span></div>
+<span style="font:italic 700 19px/.95 'Barlow Condensed',sans-serif;text-transform:uppercase;min-height:36px">{{ m.name }}</span>
+<span style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:#B8C4D3">{{ m.q }}</span>
+<span style="font:400 10.5px 'IBM Plex Mono',monospace;color:#8693A6;border-top:1px solid #202A36;padding-top:6px">[READ]</span>
+</a>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="padding:0;display:flex;flex-direction:column;gap:10px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 170ms both">
+<div style="margin:0 0 0;padding:0 0 10px;border-bottom:1px solid #EAF0F7;display:flex;gap:10px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase"><span style="color:#E8590C;font-weight:700">03</span><span>This week</span><span style="margin-left:auto;color:#8693A6;font-weight:500">THRESHOLDS CROSSED · NEW READS</span></div>
+<div style="position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding-top:14px">
+<div style="position:absolute;left:0;right:0;top:4px;height:1px;background:#202A36"></div>
+<sc-for list="{{ changes }}" as="c" hint-placeholder-count="5"><div style="position:relative;display:flex;flex-direction:column;gap:5px"><span style="position:absolute;top:-14px;left:0;width:9px;height:9px;background:{{ c.c }}"></span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">{{ c.day }}</span><span style="font:600 12px/1.35 'IBM Plex Mono',monospace">{{ c.what }}</span><span style="font:400 11px 'IBM Plex Mono',monospace;color:#8693A6">{{ c.note }}</span></div></sc-for>
+</div>
+</div>
+</main>
+</div>
+</section>
+
+<section id="C" data-screen-label="C Council home · Editorial" style="padding:40px 44px 60px">
+<div style="display:flex;align-items:baseline;gap:10px;margin:0 0 14px"><span style="font:700 10px 'IBM Plex Mono',monospace;padding:3px 7px;background:#E8590C;color:#FFFFFF">C</span><span style="font:600 12px 'IBM Plex Mono',monospace;color:#EAF0F7;background:#000;padding:3px 7px;letter-spacing:.06em;text-transform:uppercase">Council home · Editorial — bold, a weekly front page</span></div>
+<div style="width:1440px;background:#000000;color:#EAF0F7;font:400 12px/1.45 'IBM Plex Mono',monospace;box-shadow:0 24px 60px rgba(0,0,0,.5)">
+<header style="display:flex;align-items:center;gap:28px;padding:0 32px;height:48px;border-bottom:1px solid #202A36"><span style="font:italic 700 24px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">Cockpit</span><span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#8693A6">WEEK [NN] · [DATE]</span><nav style="margin-left:auto;display:flex"><sc-for list="{{ nav }}" as="n" hint-placeholder-count="5"><a href="#" style="display:flex;align-items:center;height:48px;padding:0 12px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:{{ n.ink }};box-shadow:{{ n.bar }}">{{ n.label }}</a></sc-for></nav></header>
+<div style="height:2px;background:#E8590C"></div>
+<div style="background:#E8ECF1;color:#0A0F16;padding:28px 32px 24px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:32px;align-items:end;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 60ms both">
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#536071"><span style="color:#A93D08;font-weight:700">01</span> THIS WEEK'S POSTURE · SAMPLE</span>
+<span style="font:italic 700 210px/.8 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:-.01em">Cautious</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;padding-bottom:10px">
+<span style="font:italic 700 30px/1 'Barlow Condensed',sans-serif;text-transform:uppercase">[HEADLINE — why posture is where it is, one sentence]</span>
+<span style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:#2E3947">Moved from [PREVIOUS] on [DATE]. [N] of 8 members on alert, [N] dissenting.</span>
+<div style="display:flex;gap:8px"><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:0;background:#E8590C;color:#FFFFFF;cursor:pointer" style-active="transform:scale(0.97)">LOG DECISION</button><button style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:10px 16px;border:1px solid #C5CEDA;background:#D3DBE5;color:#0A0F16;cursor:pointer" style-active="transform:scale(0.97)">READ THE DISSENT</button></div>
+</div>
+<div style="grid-column:1/-1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px"><sc-for list="{{ steps }}" as="p" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:6px"><div style="height:22px;background:{{ p.bg }};transform:skewX(-14deg);animation:reveal 300ms cubic-bezier(0.23,1,0.32,1) {{ p.delay }} both"></div><span style="font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:{{ p.ink }}">{{ p.label }}</span></div></sc-for></div>
+</div>
+<div style="padding:30px 32px;border-bottom:1px solid #202A36;display:flex;flex-direction:column;gap:20px;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) 140ms both">
+<span style="font:italic 700 56px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">Three things changed</span>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px">
+<sc-for list="{{ three }}" as="c" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:10px;border-top:2px solid #E8590C;padding-top:12px"><span style="font:700 40px/1 'IBM Plex Mono',monospace;color:#E8590C">{{ c.i }}</span><span style="font:italic 700 30px/.95 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ c.what }}</span><span style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:#B8C4D3">{{ c.note }}</span><span style="align-self:flex-start;font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid {{ c.c }};color:{{ c.c }}">{{ c.tag }}</span></div></sc-for>
+</div>
+</div>
+<div style="padding:30px 32px 34px;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;align-items:baseline;gap:16px"><span style="font:italic 700 56px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">The board</span><span style="font:500 11px 'IBM Plex Mono',monospace;color:#8693A6">EIGHT QUESTIONS · SAMPLE STATES · 1 SUPPORTIVE → 5 RISKY</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px">
+<sc-for list="{{ council }}" as="m" hint-placeholder-count="8">
+<a href="Investment Cockpit.dc.html#indicator-detail" style="display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid #202A36;text-decoration:none;color:#EAF0F7;animation:rise 480ms cubic-bezier(0.23,1,0.32,1) {{ m.delay }} both" style-hover="background:#0B1118">
+<span style="font:700 13px 'IBM Plex Mono',monospace;color:#E8590C">{{ m.idx }}</span>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font:italic 700 34px/.9 'Barlow Condensed',sans-serif;text-transform:uppercase">{{ m.name }}</span><span style="font:400 11.5px 'IBM Plex Mono',monospace;color:#B8C4D3">{{ m.q }}</span></div>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px"><span style="display:flex;gap:2px"><sc-for list="{{ m.segs }}" as="g" hint-placeholder-count="5"><span style="width:16.4px;height:10px;background:{{ g.bg }}"></span></sc-for></span><span style="font:600 10px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:2px 7px 2px 6px;background:#111821;border-left:3px solid {{ m.c }};color:{{ m.c }}">{{ m.tag }}</span></div>
+</a>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const UP = '#22C55E', DN = '#EF4444', WA = '#FFB84D';
+    const lvl = n => n <= 2 ? UP : n === 3 ? WA : DN;
+    const tagOf = n => n <= 2 ? '▼ CALM' : n === 3 ? '◆ WATCH' : '▲ ALERT';
+    const segs = n => [1, 2, 3, 4, 5].map(i => ({ bg: i <= n ? lvl(n) : '#111821' }));
+    const nav = ['Council', 'Panels', 'Norway', 'Portfolio', 'Journal', 'Learn'].map((label, i) => ({ label,
+      ink: i === 0 ? '#EAF0F7' : '#8693A6', bar: i === 0 ? 'inset 0 0 0 200px #111821' : 'none' }));
+    const syms = ['OSEBX', 'I-44', 'EURNOK', 'USDNOK', 'NO 10Y', 'NOWA', 'BRENT', 'MSCI ACWI', 'S&P 500', 'US 10Y', 'HY OAS', 'VIX', 'GOLD', 'DXY'];
+    const ticker = [...syms, ...syms].map(sym => ({ sym }));
+    const steps = ['Defensive', 'Cautious', 'Neutral', 'Leaning in', 'Aggressive'].map((label, i) => ({ label, delay: 300 + i * 70 + 'ms',
+      bg: i === 1 ? '#E8590C' : i < 1 ? '#F6D6C2' : '#D3DBE5', ink: i === 1 ? '#0A0F16' : '#536071' }));
+    const stepsRev = [...steps].reverse();
+    const reasonsL = [
+      { who: 'Marks', short: 'credit running hot', c: '#C01E2D' },
+      { who: 'Taleb & Spitznagel', short: 'little crash convexity', c: '#C01E2D' },
+      { who: 'Tudor Jones', short: 'trend still with you (dissent)', c: '#0A7A42' },
+    ];
+    const changes = [
+      { day: 'MON', what: 'HY OAS crossed watch line', note: '[THRESHOLD] · first since [DATE]', c: WA },
+      { day: 'TUE', what: 'EURNOK above 200-day', note: 'Weaker krone, imported inflation', c: DN },
+      { day: 'WED', what: 'Norges Bank held at ––.––%', note: 'Path: [N] cuts by [DATE]', c: '#B8C4D3' },
+      { day: 'THU', what: 'Brent ––.––% w/w', note: 'Fiscal room and NOK sensitive', c: WA },
+      { day: 'FRI', what: 'S&P 500 trend intact', note: 'Above 50 and 200-day', c: UP },
+    ];
+    const three = [changes[0], changes[1], changes[2]].map((c, i) => ({ ...c, i: '0' + (i + 1), tag: c.c === DN ? '▲ ALERT' : c.c === WA ? '◆ WATCH' : '— NEW' }));
+    const sources = [
+      { label: 'Market-implied', c: '#3B82F6', line: 'solid' }, { label: 'Model', c: '#FF9A5C', line: 'solid' },
+      { label: 'Base rate', c: '#B8C4D3', line: 'solid' }, { label: 'My estimate', c: '#EAF0F7', line: 'dashed' },
+    ];
+    const raw = [
+      ['Ray Dalio', 'What regime and debt cycle are we in?', 3], ['Stanley Druckenmiller', 'Where is liquidity going, and does price confirm it?', 2],
+      ['Howard Marks', 'How hot are psychology and credit?', 4], ['Buffett & Greenblatt', 'Are my holdings good businesses at good prices?', 3],
+      ['Taleb & Spitznagel', 'Where am I fragile, and what pays off if things break?', 4], ['Paul Tudor Jones', 'Is the trend with me?', 2],
+      ['Bernstein & Bogle', 'Will this meet my goals, and what deep risks exist?', 3], ['Charlie Munger', 'Red team: what would make this decision stupid?', 3],
+    ];
+    const council = raw.map(([name, q, n], i) => ({ name, q, n, c: lvl(n), tag: tagOf(n), tagShort: tagOf(n).split(' ')[0] + ' ' + tagOf(n).split(' ')[1].slice(0, 5), segs: segs(n),
+      idx: String(i + 1).padStart(2, '0'), delay: 200 + i * 55 + 'ms', gDelay: 360 + i * 55 + 'ms' }));
+    const councilSorted = [...council].sort((a, b) => b.n - a.n).map((m, i) => ({ ...m, idx: String(i + 1).padStart(2, '0'), delay: 200 + i * 55 + 'ms', gDelay: 360 + i * 55 + 'ms' }));
+    return { nav, ticker, steps, stepsRev, reasonsL, changes, three, sources, council, councilSorted };
+  }
+}
+</script>
+</body>
+</html>
